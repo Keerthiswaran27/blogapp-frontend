@@ -1,0 +1,79 @@
+﻿@* @page "/ai-blog"
+@using BlogApp1.Client.Services 
+@inject BlogAiService BlogService
+@using MudBlazor
+@using BlogApp1.Shared
+<MudContainer MaxWidth="MaxWidth.Medium" Class="my-8">
+
+    <MudText Typo="Typo.h4">✍️ AI Blog Generator</MudText>
+
+    <MudTextField Label="Topic"
+                  @bind-Value="topic"
+                  Variant="Variant.Outlined" />
+
+    <MudSelect T="string"
+               Label="Tone"
+               @bind-Value="tone"
+               Variant="Variant.Outlined">
+        <MudSelectItem Value="@("professional")">Professional</MudSelectItem>
+        <MudSelectItem Value="@("friendly")">Friendly</MudSelectItem>
+        <MudSelectItem Value="@("technical")">Technical</MudSelectItem>
+    </MudSelect>
+
+    <MudTextField Label="Word Count"
+                  @bind-Value="words"
+                  Variant="Variant.Outlined"
+                  InputType="InputType.Number" />
+
+    <MudButton Variant="Variant.Filled"
+               Color="Color.Primary"
+               OnClick="Generate">
+        Generate Blog
+    </MudButton>
+
+    @if (loading)
+    {
+        <MudProgressCircular Indeterminate="true" />
+    }
+
+    @if (!string.IsNullOrEmpty(result.Content))
+    {
+        <MudPaper Class="pa-4 mt-4">
+            <MudText Typo="Typo.h6">Generated Blog</MudText>
+            <div>@((MarkupString)result.Content)</div>
+        </MudPaper>
+    }
+
+</MudContainer>
+
+@code {
+
+    string topic;
+    string tone = "professional";
+    int words = 600;
+
+    OllamaBlogResponse result;
+    bool loading;
+
+    async Task Generate()
+    {
+        loading = true;
+
+        try
+        {
+            var req = new OllamaBlogRequest
+            {
+                Topic = topic,
+                WordCount = words
+            };
+
+            result = await BlogService.GenerateBlogAsync(req);
+        }
+        catch (Exception ex)
+        {
+            
+        }
+
+        loading = false;
+    }
+} *@

@@ -1,0 +1,297 @@
+﻿@page "/editor/profile"
+@layout EditorLayout
+@using BlogApp1.Shared
+@using MudBlazor
+@inject EditorService ProfileService
+@inject NavigationManager Nav
+@inject IJSRuntime JS
+
+<PageTitle>Editor Profile</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="py-4">
+    @if (IsLoading)
+    {
+        <MudStack Spacing="2">
+            <MudSkeleton SkeletonType="SkeletonType.Rectangle" Height="180px" />
+            <MudSkeleton SkeletonType="SkeletonType.Rectangle" Height="280px" />
+        </MudStack>
+    }
+    else if (Profile == null || Profile.User == null)
+    {
+        <MudPaper Elevation="1" Class="pa-4">
+            <MudText Typo="Typo.body1" Color="Color.Error">
+                Failed to load editor profile.
+            </MudText>
+        </MudPaper>
+    }
+    else
+    {
+        <MudPaper Class="pa-4" Style="background:rgba(233, 230, 245,0.4);border-radius:16px; display:flex; flex-direction:column; gap:16px;height:100%">
+            <MudGrid Style="height:200px;">
+                <MudItem md="2">
+                    <MudContainer Style="padding:10px;height:100%;">
+                        @if (!string.IsNullOrEmpty(user.AvatarUrl))
+                        {
+                            <MudAvatar Style="height:100%; width:100%; cursor:pointer;">
+                                <MudImage Src="@user.AvatarUrl" />
+                            </MudAvatar>
+                        }
+                        else
+                        {
+                            <MudAvatar Style="height:100%; width:100%; font-size:5rem;background-color:#3f51b5;color:white;">
+                                @user.FullName.First()
+                            </MudAvatar>
+                        }
+                    </MudContainer>
+                </MudItem>
+                <MudItem md="10">
+                    <MudGrid Style="display:flex;justify-content:center;align-items:center;margin-top:8px;">
+                        <MudItem md="3">
+                            <MudStack Spacing="0" Justify="Justify.Center" AlignItems="AlignItems.Center">
+                                <MudText Typo="Typo.h6" Align="Align.Center">Followers</MudText>
+                                <MudText Typo="Typo.h6" Align="Align.Center">@(user.Follower?.Count() ?? 0)</MudText>
+                            </MudStack>
+                        </MudItem>
+                        <MudItem md="3">
+                            <MudStack Spacing="0">
+                                <MudText Typo="Typo.h6" Align="Align.Center">Following</MudText>
+                                <MudText Typo="Typo.h6" Align="Align.Center">@(user.Following?.Count() ?? 0)</MudText>
+                            </MudStack>
+                        </MudItem>
+                        <MudItem md="3">
+                            <MudStack Spacing="0">
+                                <MudText Typo="Typo.h6" Align="Align.Center">Posts</MudText>
+                                <MudText Typo="Typo.h6" Align="Align.Center">@user.PostCount</MudText>
+                            </MudStack>
+                        </MudItem>
+                        <MudItem md="3">
+                            <MudStack Spacing="0">
+                                <MudText Typo="Typo.h6" Align="Align.Center">Views</MudText>
+                                <MudText Typo="Typo.h6" Align="Align.Center">@user.ViewCount</MudText>
+                            </MudStack>
+                        </MudItem>
+                        <MudItem md="12">
+                            <MudDivider Style="border-color:darkgray" />
+                            <MudStack Row="true" Justify="Justify.Center" Spacing="5" Style="margin:10px;">
+                                <MudIconButton Icon="@Icons.Custom.Brands.Twitter" Href="@user.Twitter" Color="Color.Primary" Size="Size.Medium" />
+
+                                <MudIconButton Icon="@Icons.Custom.Brands.LinkedIn" Href="@user.LinkedIn" Color="Color.Primary" Size="Size.Medium" />
+
+                                <MudIconButton Icon="@Icons.Custom.Brands.Instagram" Href="@user.Instagram" Color="Color.Primary" Size="Size.Medium" />
+
+                                <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Primary" Size="Size.Medium" Href="@user.Github" />
+
+                                <MudIconButton Icon="@Icons.Custom.Brands.Facebook" Color="Color.Primary" Size="Size.Medium" Href="@user.Medium" />
+                            </MudStack>
+                        </MudItem>
+                    </MudGrid>
+                </MudItem>
+            </MudGrid>
+            <MudDivider Style="border-color:darkgray" />
+            <MudGrid Spacing="2">
+                <MudItem md="6">
+                    <MudTextField @bind-Value="user.FullName" Label="Username" Disabled="true" Variant="Variant.Outlined" />
+                </MudItem>
+                <MudItem md="6">
+                    <MudDatePicker Label="Joined On" Editable="true" @bind-Date="user.CreatedAt" Disabled="true" Placeholder="Select Date" Variant="Variant.Outlined" />
+                </MudItem>
+                <MudItem md="6">
+                    <MudTextField @bind-Value="user.Email" Label="Email" Disabled="true" Variant="Variant.Outlined" />
+                </MudItem>
+                <MudItem md="6">
+                    <MudTextField @bind-Value="user.Location" Label="Location" Disabled="true" Variant="Variant.Outlined" />
+                </MudItem>
+                <MudItem md="12">
+                    <MudTextField @bind-Value="user.Bio" Label="Bio" Lines="2" Disabled="true" Variant="Variant.Outlined" />
+                </MudItem>
+            </MudGrid>
+            <MudStack Row="true" Justify="Justify.Center" Spacing="5">
+
+                <MudChip T="string" Variant="Variant.Outlined"
+                         Style="@(user.IsActive ? "border-color: #3f51b5; color: #3f51b5;" : "")"
+                         Color="@(user.IsActive ? Color.Default : Color.Error)">
+                    @(user.IsActive ? "Active" : "Inactive")
+                </MudChip>
+
+                <MudChip T="string" Variant="Variant.Outlined"
+                         Style="@(user.IsVerified ? "border-color: #3f51b5; color: #3f51b5;" : "")"
+                         Color="@(user.IsVerified ? Color.Default : Color.Error)">
+                    @(user.IsVerified ? "Verified" : "Unverified")
+                </MudChip>
+
+                <MudChip T="string" Variant="Variant.Outlined"
+                         Style="@(user.NewsletterSubscribed ? "border-color: #3f51b5; color: #3f51b5;" : "")"
+                         Color="@(user.NewsletterSubscribed ? Color.Default : Color.Error)">
+                    @(user.NewsletterSubscribed ? "NewsLetter Subscribed" : "NewsLetter Unsubscribed")
+                </MudChip>
+
+                <MudChip T="string" Variant="Variant.Outlined"
+                         Style="@(user.Theme ? "border-color: #3f51b5; color: #3f51b5;" : "")"
+                         Color="@(user.Theme ? Color.Default : Color.Error)">
+                    @(user.Theme ? "Light" : "Dark")
+                </MudChip>
+
+            </MudStack>
+        </MudPaper>
+        <!-- BOTTOM: REVIEWED BLOGS -->
+        <MudPaper Elevation="1" Class="pa-4 mt-3" Style="background:rgba(233, 230, 245,0.4);border-radius:16px;">
+            <MudStack Direction="Row" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Class="mb-2">
+                <MudText Typo="Typo.subtitle1">Reviewed blogs</MudText>
+                <MudText Typo="Typo.caption" Color="Color.Secondary">
+                    @($"{Profile.ReviewedBlogs?.Count() ?? 0} total")
+                </MudText>
+            </MudStack>
+
+            <MudTable Items="Profile.ReviewedBlogs"
+                      Hover="true"
+                      Dense="true"
+                      Elevation="0"
+                      Breakpoint="Breakpoint.Sm"
+                      Class="allblogs-table">
+                <HeaderContent>
+                    <MudTh>Title</MudTh>
+                    <MudTh>Status</MudTh>
+                    <MudTh>Domain</MudTh>
+                    <MudTh>Views</MudTh>
+                    <MudTh>Reviewed</MudTh>
+                    <MudTh class="text-right">Action</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd>@context.Title</MudTd>
+                    <MudTd>
+                        <MudChip T="string"
+                                 Color="@GetStatusColor(context.Status)"
+                                 Size="Size.Small"
+                                 Variant="Variant.Filled">
+                            @(string.IsNullOrWhiteSpace(context.Status) ? "Unknown" : context.Status)
+                        </MudChip>
+                    </MudTd>
+                    <MudTd>@context.Domain</MudTd>
+                    <MudTd>@context.ViewCount</MudTd>
+                    <MudTd>@context.ReviewedAt?.ToLocalTime().ToString("dd MMM yyyy")</MudTd>
+                    <MudTd Class="text-right">
+                        <MudButton Variant="Variant.Outlined"
+                                   Color="Color.Primary"
+                                   Size="Size.Small"
+                                   OnClick="@(() => GoToBlog(context.Id))">
+                            Open
+                        </MudButton>
+                    </MudTd>
+                </RowTemplate>
+
+                <NoRecordsContent>
+                    <MudText Typo="Typo.body2" Class="pa-4">
+                        No reviewed blogs found for this editor.
+                    </MudText>
+                </NoRecordsContent>
+            </MudTable>
+        </MudPaper>
+    }
+</MudContainer>
+
+<style>
+    .profile-card {
+        border-radius: 16px;
+    }
+
+    .profile-avatar {
+        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.25);
+    }
+
+    .profile-stat-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.75rem;
+    }
+
+    .profile-stat-card {
+        padding: 8px 10px;
+        border-radius: 12px;
+        background-color: rgba(148, 163, 184, 0.065);
+    }
+
+    .fw-600 {
+        font-weight: 600;
+    }
+
+    .truncate-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .allblogs-table,
+    .allblogs-table * {
+        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+        .allblogs-table .mud-table-head {
+            background-color: #a8a5cf;
+        }
+
+            .allblogs-table .mud-table-head th {
+                font-weight: 600;
+                color: #111827;
+            }
+
+        .allblogs-table .mud-table-body .mud-table-row:hover {
+            background-color: rgba(99, 102, 241, 0.04);
+            cursor: pointer;
+        }
+
+    .allblogs-title-cell {
+        font-weight: 500;
+    }
+    @@media (max-width: 960px) {
+        .profile-stat-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+</style>
+
+@code {
+    private EditorProfileResponse? Profile;
+    private bool IsLoading = true;
+    private BlogUserDto? user;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        IsLoading = true;
+        try
+        {
+            Profile = await ProfileService.GetProfileAsync();
+            user = Profile?.User;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private void GoToBlog(int id)
+    {
+        Nav.NavigateTo($"/editor/review/{id}");
+    }
+
+    private Color GetStatusColor(string? status)
+    {
+        if (string.IsNullOrWhiteSpace(status))
+            return Color.Default;
+
+        return status.ToLower() switch
+        {
+            "pending"  => Color.Warning,
+            "approved" => Color.Success,
+            "rejected" => Color.Error,
+            "revise"   => Color.Info,
+            "draft"    => Color.Secondary,
+            _          => Color.Default
+        };
+    }
+}

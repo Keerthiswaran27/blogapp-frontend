@@ -1,0 +1,364 @@
+﻿@page "/author/write/story"
+@layout ReaderLayout
+@using BlogApp1.Shared
+@using BlogApp1.Client.Components.Auth
+@using MudBlazor
+@using BlogApp1.Client.Services
+@inject IJSRuntime JS
+@inject ImageApiService ImageApiService
+@using BSService.Services
+@inject BlogService BlogService
+@inject ISnackbar Snackbar
+@inject NavigationManager NavManager
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="compose-root">
+    <MudPaper Class="compose-card" Elevation="4">
+        <div class="allblogs-header">
+            <div>
+                <MudText Typo="Typo.h4" Class="allblogs-title">
+                    Where Stories Begin
+                </MudText>
+                <MudText Typo="Typo.body2" Class="allblogs-subtitle">
+                    A quiet space to write, reflect, and publish.
+
+                </MudText>
+            </div>
+        </div>
+
+        <MudGrid>
+            <MudItem xs="12">
+                <MudTextField @bind-Value="Blog.Title"
+                              Label="Title"
+                              Variant="Variant.Outlined"
+                              FullWidth="true" />
+            </MudItem>
+
+            <MudItem xs="12">
+                <MudTextField @bind-Value="Blog.Slug"
+                              Label="Slug"
+                              HelperText="URL-friendly identifier (must be unique)"
+                              Variant="Variant.Outlined"
+                              FullWidth="true" />
+            </MudItem>
+
+            <MudItem xs="12">
+                <MudText Typo="Typo.h6" Class="allblogs-title ml-2 mb-1">
+                    Begin writing your content below.
+                </MudText>
+
+                <MudPaper Class="quill-wrapper pa-0">
+                    <div id="@EditorId" style="height:300px;"></div>
+                </MudPaper>
+            </MudItem>
+            <MudItem xs="12" md="6">
+                <MudTextField @bind-Value="Blog.Domain"
+                              Label="Domain / Category"
+                              Variant="Variant.Outlined"
+                              FullWidth="true" />
+            </MudItem>
+            <!-- Tags -->
+            <MudItem xs="12" md="6">
+                @* <MudText Typo="Typo.subtitle1" Class="mb-1">
+                    Tags
+                </MudText> *@
+
+                <MudStack Row="true" Spacing="2" AlignItems="AlignItems.Center">
+                    <MudTextField @bind-Value="newTag"
+                                  Label="Add tag"
+                                  Variant="Variant.Outlined"
+                                  OnKeyDown="OnTagKeyDown"
+                                  Immediate="true"
+                                  Adornment="Adornment.End"
+                                  AdornmentIcon="@Icons.Material.Filled.Add"
+                                  OnAdornmentClick="AddTag" />
+                    @* <MudButton Variant="Variant.Outlined" OnClick="AddTag">
+                        Add
+                    </MudButton> *@
+                </MudStack>
+
+                <MudChipSet T="string"
+                            Class="mt-2 tag-chipset"
+                            AllClosable="true"
+                            OnClose="Closed">
+                    @if (Blog.Tags?.Count > 0)
+                    {
+                        @foreach (var value in Blog.Tags)
+                        {
+                            <MudChip Text="@value"
+                                     Class="tag-chip">
+                            </MudChip>
+                        }
+                    }
+                </MudChipSet>
+
+
+            </MudItem>
+            
+
+            <MudItem xs="12" md="12">
+                <MudTextField @bind-Value="Blog.MetaDescription"
+                              Label="Meta description"
+                              Variant="Variant.Outlined"
+                              Lines="3"
+                              FullWidth="true" />
+            </MudItem>
+
+            <MudItem xs="12">
+                <MudTextField @bind-Value="Blog.Summary"
+                              Label="Summary (optional)"
+                              Variant="Variant.Outlined"
+                              Lines="3"
+                              FullWidth="true" />
+            </MudItem>
+
+            
+
+            <!-- Cover image -->
+            <MudItem xs="12" Class="mt-4">
+                <MudText Typo="Typo.h6" Class="mb-1 ml-2 allblogs-title">
+                    Cover image
+                </MudText>
+
+                <MudFileUpload T="IReadOnlyList<IBrowserFile>"
+                               Accept=".png,.jpg,.jpeg"
+                               MaximumFileCount="1"
+                               @ref="_fileUpload"
+                               OnFilesChanged="OnInputFileChanged"
+                               InputClass="file-upload-input"
+                               Hidden="false">
+                    <ActivatorContent>
+                        <MudPaper Class="@_dragClass"
+                                  Style="width:100%; height:250px;"
+                                  Outlined="true">
+                            <MudText Align="Align.Center">
+                                Drag and drop image here<br />or click to select<br /><br />
+                            </MudText>
+                            @if (file is not null)
+                            {
+                                <MudChip T="string"
+                                         Color="Color.Dark"
+                                         Text="@file.Name"
+                                         Style="margin-bottom:8px;" />
+                            }
+                        </MudPaper>
+                    </ActivatorContent>
+                </MudFileUpload>
+
+                @if (file is not null)
+                {
+                    <MudStack Row="true" Class="mt-3" Justify="Justify.FlexEnd" Spacing="2">
+                        <MudButton Variant="Variant.Filled"
+                                   Style="background:linear-gradient(135deg,#3d387a,#E9D5FF);color:white;border-radius:16px;"
+                                   OnClick="ClearAsync">
+                            Clear
+                        </MudButton>
+                        <MudButton Variant="Variant.Filled"
+                                   Style="background:linear-gradient(135deg,#3d387a,#E9D5FF);color:white;border-radius:16px;"
+                                   OnClick="Upload">
+                            Upload
+                        </MudButton>
+                    </MudStack>
+                }
+
+
+                @if (!string.IsNullOrEmpty(UploadedUrl))
+                {
+                    <div class="mt-3">
+                        <MudImage Src="@UploadedUrl"
+                                  Alt="Uploaded Image"
+                                  Width="200"
+                                  Height="200" />
+                    </div>
+                }
+            </MudItem>
+
+            <MudItem xs="12" Class="mt-4 d-flex justify-end">
+                <MudButton Color="Color.Primary"
+                           Variant="Variant.Filled"
+                           Style="background:linear-gradient(135deg,#3d387a,#E9D5FF);color:white;border-radius:16px;"
+                           OnClick="PublishBlogAsync">
+                    Publish
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+</MudContainer>
+
+@code {
+    private NewBlogRequest Blog = new();
+    private BlogDto? CreatedBlog;
+
+    private string EditorId = "main-editor";
+    private string EditorContent = string.Empty;
+
+    private string? UploadedUrl;
+    private IBrowserFile? file;
+    private MudFileUpload<IReadOnlyList<IBrowserFile>>? _fileUpload;
+    private string _dragClass = "relative rounded-lg border-2 border-dashed pa-4 mt-4 mud-width-full mud-height-full";
+
+    private string newTag = string.Empty;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("quillFunctions.create", EditorId);
+        }
+    }
+
+    private void OnInputFileChanged(InputFileChangeEventArgs e)
+    {
+        file = e.GetMultipleFiles(1)
+                .FirstOrDefault(f => f.ContentType == "image/png"
+                                   || f.ContentType == "image/jpeg"
+                                   || f.ContentType == "image/jpg");
+        ClearDragClass();
+    }
+
+    private void ClearDragClass()
+    {
+        _dragClass = "relative rounded-lg border-2 border-dashed pa-4 mt-4 mud-width-full mud-height-full";
+    }
+
+    private async Task Upload()
+    {
+        if (file is not null)
+        {
+            UploadedUrl = await ImageApiService.UploadImageAsync(file);
+            Blog.CoverImageUrl = UploadedUrl;
+            StateHasChanged();
+        }
+    }
+
+    private async Task ClearAsync()
+    {
+        if (_fileUpload is not null)
+            await _fileUpload.ClearAsync();
+
+        file = null;
+        UploadedUrl = null;
+        Blog.CoverImageUrl = null;
+        ClearDragClass();
+        StateHasChanged();
+    }
+
+    private void AddTag()
+    {
+        var tag = newTag?.Trim();
+        if (!string.IsNullOrWhiteSpace(tag))
+        {
+            if (!Blog.Tags.Any(t => string.Equals(t, tag, StringComparison.OrdinalIgnoreCase)))
+                Blog.Tags.Add(tag);
+
+            newTag = string.Empty;
+        }
+    }
+
+    private void Closed(MudChip<string> chip)
+    {
+        var tag = chip.Text;
+        if (!string.IsNullOrWhiteSpace(tag))
+            Blog.Tags.Remove(tag);
+    }
+
+
+
+    private void OnTagKeyDown(KeyboardEventArgs args)
+    {
+        if (args.Key == "Enter")
+        {
+            AddTag();
+        }
+    }
+
+    private async Task PublishBlogAsync()
+    {
+        EditorContent = await JS.InvokeAsync<string>("quillFunctions.getContent", EditorId);
+        Blog.Content = EditorContent;
+
+        if (string.IsNullOrWhiteSpace(Blog.Title) || string.IsNullOrWhiteSpace(Blog.Content))
+        {
+            Snackbar.Add("Title and content are required.", Severity.Warning);
+            return;
+        }
+
+        try
+        {
+            CreatedBlog = await BlogService.CreateBlogAsync(Blog);
+
+            if (CreatedBlog is not null)
+            {
+                Snackbar.Add("Blog created successfully!", Severity.Success);
+                NavManager.NavigateTo($"/author/blog/{CreatedBlog.Slug}");
+            }
+            else
+            {
+                Snackbar.Add("Failed to create blog. No data returned.", Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add(ex.Message, Severity.Error);
+        }
+    }
+}
+
+<style>
+    .compose-root {
+        margin-top: 24px;
+        margin-bottom: 24px;
+        min-height: 90vh;
+        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .compose-card {
+        padding: 24px 28px;
+        border-radius: 24px;
+        /* background: linear-gradient(135deg, #EEF2FF 0%, #E0ECFF 100%); */
+        background: rgba(233, 230, 245,0.4);
+        box-shadow: 0 24px 40px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(148, 163, 184, 0.12);
+    }
+
+    .compose-title {
+        color: #3d387a;
+        font-family: 'Poppins', 'Segoe UI', sans-serif;
+    }
+
+    .quill-wrapper {
+        border-radius: 12px;
+        border: 1px solid rgba(61, 56, 122, 0.2);
+        background: #ffffff;
+    }
+
+    .tag-chipset {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .tag-chip {
+        background: linear-gradient(135deg, #3d387a, #E9D5FF);
+        color: #ffffff;
+        border-radius: 999px;
+        padding-inline: 12px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        box-shadow: 0 2px 6px rgba(61, 56, 122, 0.25);
+    }
+
+    .allblogs-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+
+    .allblogs-title {
+        font-weight: 600;
+        color: #111827;
+    }
+
+    .allblogs-subtitle {
+        color: #6B7280;
+    }
+</style>

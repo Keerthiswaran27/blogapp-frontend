@@ -1,0 +1,244 @@
+﻿@page "/reader/chat"
+@layout AuthorLayour 
+@using BlogApp1.Client.Services
+@inject ChatHistoryApiService ChatHistoryApiService
+@inject ChatService ChatApi  
+@using MudBlazor
+@using BlogApp1.Shared
+@using System.Text.RegularExpressions 
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JS
+
+<MudContainer MaxWidth="MaxWidth.Large" Style="height:90vh;" Class="my-8">
+    
+    @if(chatstarted)
+    {
+        <MudContainer Class="chat-container pa-4 mb-6" Style="height: 80vh;">
+            <MudContainer Style="overflow-y: auto;height:90%;padding:10px;">
+                @foreach (var msg in messages)
+                {
+                    <div class="@(msg.IsUser ? "d-flex justify-end mb-4" : "d-flex justify-start mb-4")">
+                        <MudPaper Class="@(msg.IsUser ? "user-message pa-4" : "bot-message pa-4")" 
+                                    Elevation="2" Width="75%" MaxWidth="800px">
+                    
+                            <MudText Typo="Typo.body1" Class="whitespace-pre-wrap">
+                                @((MarkupString)FormatMessage(msg.Content))
+                            </MudText>
+                    
+                            @* @if (!msg.IsUser && msg.Sources?.Any() == true)
+                            {
+                                <MudDivider Class="my-3"/>
+                                <MudChipSet T="string" Row="true">
+                                    @foreach (var source in msg.Sources.Take(3))
+                                    {
+                                        <MudChip Variant="Variant.Outlined"
+                                                 Style="@($"color:{Colors.Indigo.Darken1};")"
+                                                 Size="Size.Small"
+                                                 @onclick="()=>GoToBlog(source.Url)">
+                                            <strong>[@source.SourceNumber]</strong>
+                                            @(" "+@source.Title)
+                                        </MudChip>
+                                    }
+                                </MudChipSet>
+                            } *@
+                        </MudPaper>
+                    </div>
+                }
+                @if(AIChatLoading)
+                {
+                    <div class="d-flex justify-start mb-4">
+                        <MudPaper Class="bot-message pa-4" Elevation="2" Width="75%" MaxWidth="800px">
+                            <MudSkeleton />
+                            <MudSkeleton />
+                        </MudPaper>
+                    </div>
+                }
+            </MudContainer>
+
+            <MudContainer Class="question-container d-flex gap-3 mt-3">
+                <MudTextField @bind-Value="question"
+                              Placeholder="Next question, answers coming right away...."
+                              Variant="Variant.Text"
+                              Immediate="true"
+                              Class="flex-grow-1 mb-1" />
+                <MudButton Variant="Variant.Filled"
+                           style="background-color:black; color:white;border-radius:16px;"
+                           OnClick="SendQuestion"
+                           Size="Size.Large">
+                    send
+                </MudButton>
+            </MudContainer>
+        </MudContainer>
+    }
+    else
+    {
+        <MudContainer class="intro-container">
+            <MudStack Spacing="7">
+                 <MudText Typo="Typo.h3" Align="Align.Start">
+                     Hi @UserName, What would you like to explore today?
+                 </MudText>
+                 
+                <MudContainer Class="question-container d-flex gap-3">
+                    <MudTextField @bind-Value="question"
+                                  Placeholder="Ask me about the topic you are interested in...."
+                                  Variant="Variant.Text"
+                                  Class="flex-grow-1 mb-1" />
+                    <MudButton Variant="Variant.Filled"
+                               style="background-color:black; color:white;border-radius:16px;"
+                               OnClick="SendQuestion"
+                               Size="Size.Large">
+                        chat
+                    </MudButton>
+                </MudContainer>
+            </MudStack>
+        </MudContainer>
+    }
+</MudContainer>
+
+@code {
+
+    private string question = "";
+    private List<ChatMessage> messages = new();
+    private bool chatstarted = false;
+    private string UserName = "";
+    private Guid UserUuid;
+    private bool AIChatLoading = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        UserName = await JS.InvokeAsync<string>(
+            "sessionStorage.getItem", "name");
+        UserUuid = await JS.InvokeAsync<Guid>(
+            "sessionStorage.getItem", "uid");
+    }
+
+    private async Task SendQuestion()
+    {
+        AIChatLoading = true;
+        if (string.IsNullOrWhiteSpace(question)) return;
+
+        messages.Add(new ChatMessage 
+        { 
+            Content = question, 
+            IsUser = true 
+        });
+
+        var currentQuestion = question;
+        chatstarted = true;
+        question = "";
+        StateHasChanged();
+
+        try
+        {
+            // 🔥 NEW SERVICE CALL
+            var response =
+                await ChatApi.AskBot(currentQuestion);
+            AIChatLoading = false;
+            messages.Add(new ChatMessage
+            {
+                Content = response.Answer,
+                IsUser = false,
+                Sources = response.Sources
+            });
+            ChatInsertDto input = new();
+
+            input.UserMessage = currentQuestion;
+            input.AiMessage = response.Answer;
+            input.AuthorUuid = UserUuid;
+            await ChatHistoryApiService.SaveChatAsync(input);
+        }
+        catch (Exception ex)
+        {
+            messages.Add(new ChatMessage
+            {
+                Content = $"❌ Error: {ex.Message}",
+                IsUser = false
+            });
+        }
+
+        StateHasChanged();
+    }
+
+    private void GoToBlog(string url)
+    {
+        NavigationManager.NavigateTo(url, true);
+    }
+
+    // formatting stays same
+    private string FormatMessage(string content)
+    {
+        content = Regex.Replace(content,
+            @"\*\*(.*?)\*\*", "<strong>$1</strong>");
+
+        content = Regex.Replace(content,
+            @"`(.*?)`", "<code>$1</code>");
+
+        content = Regex.Replace(content,
+            @"``````", "<pre><code>$1</code></pre>",
+            RegexOptions.Singleline);
+
+        content = content.Replace("\n", "<br/>");
+
+        return content;
+    }
+
+    // 🔥 UPDATED MODEL
+    public class ChatMessage
+    {
+        public string Content { get; set; } = "";
+        public bool IsUser { get; set; }
+        public List<SourceSnippet> Sources { get; set; } = new();
+    }
+}
+<style>
+    body {
+        background: linear-gradient(to bottom, #ffffff, #ede9ff);
+    }
+
+    .user-message {
+        background: linear-gradient(135deg,#9f9bd1,#E9D5FF) !important;
+        color: black !important;
+        border-radius: 18px !important;
+    }
+
+    .intro-container {
+        height: 80vh;
+        width: 850px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 16px;
+    }
+
+    .question-container {
+        width: 800px;
+        background-color: white;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    }
+
+    .chat-container {
+        width: 850px;
+        padding: 10px;
+    }
+
+        .chat-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .chat-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .chat-container::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 4px;
+        }
+
+    .bot-message {
+        background: linear-gradient(180deg, #f3f0ff, #e8e3ff) !important;
+        border-radius: 18px !important;
+    }
+
+</style>

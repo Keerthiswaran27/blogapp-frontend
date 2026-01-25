@@ -1,0 +1,134 @@
+﻿@page "/author/chat-history"
+@layout ReaderLayout
+@using BlogApp1.Client.Services
+@inject ChatHistoryApiService ChatHistoryApi
+@inject IJSRuntime JS
+@using BlogApp1.Shared
+@using MudBlazor
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="allblogs-container">
+    <MudPaper Elevation="8" Class="allblogs-shell">
+        <!-- Header -->
+        <div class="allblogs-header">
+            <div>
+                <MudText Typo="Typo.h4" Class="allblogs-title">
+                    Chat History
+
+                </MudText>
+                <MudText Typo="Typo.body2" Class="allblogs-subtitle">
+                    Revisit your past conversations anytime.
+
+                </MudText>
+            </div>
+        </div>
+
+        @if (loading)
+        {
+            <MudContainer MaxWidth="MaxWidth.ExtraLarge" Style="height:600px;display:flex;justify-content:center;align-items:center;">
+                <MudProgressCircular Indeterminate="true" Color="Color.Primary" Size="Size.Large" Class="mt-5" />
+            </MudContainer>
+        }
+        else if (history == null || history.Count == 0)
+        {
+            <MudText>No history found</MudText>
+        }
+        else
+        {
+            <MudExpansionPanels Elevation="2">
+
+                @foreach (var day in history)
+                {
+                    <MudExpansionPanel Text="@day.Date.ToString("dd MMM yyyy")"
+                                       Expanded="@false"
+                                       Class="mb-3">
+
+                        <MudContainer Class="pa-4">
+                            @foreach (var chat in day.Messages)
+                            {
+                                <!-- QUESTION (Right) -->
+                                <div class="d-flex justify-end mb-2">
+                                    <MudPaper Class="question-bubble pa-3">
+                                        <MudText Typo="Typo.body2">
+                                            @chat.Question
+                                        </MudText>
+                                    </MudPaper>
+                                </div>
+
+                                <!-- ANSWER (Left) -->
+                                <div class="d-flex justify-start mb-4">
+                                    <MudPaper Class="answer-bubble pa-3">
+                                        <MudText Typo="Typo.body2">
+                                            @chat.Answer
+                                        </MudText>
+                                    </MudPaper>
+                                </div>
+                            }
+                        </MudContainer>
+
+                    </MudExpansionPanel>
+                }
+
+            </MudExpansionPanels>
+        }
+    </MudPaper>
+</MudContainer>
+
+<style>
+
+    .question-bubble{
+        background: linear-gradient(135deg,#9f9bd1,#E9D5FF);
+        border-radius:18px;
+        max-width:70%;
+    }
+
+    .answer-bubble{
+        background: linear-gradient(180deg,#f3f0ff,#e8e3ff);
+        border-radius:18px;
+        max-width:70%;
+    }
+</style>
+
+@code {
+
+    private List<ChatHistoryGroupDto>? history;
+    private bool loading = true;
+    private Guid userUuid;
+
+    protected override async Task OnInitializedAsync()
+    {
+        history = await ChatHistoryApi.GetChatHistoryAsync();
+        loading = false;
+    }
+}
+<style>
+    .allblogs-container {
+        margin-top: 24px;
+        margin-bottom: 24px;
+        min-height: 90vh;
+        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .allblogs-shell {
+        padding: 24px 28px;
+        border-radius: 24px;
+        /* background: linear-gradient(135deg, #EEF2FF 0%, #E0ECFF 100%); */
+        background: rgba(233, 230, 245,0.4);
+        box-shadow: 0 24px 40px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(148, 163, 184, 0.12);
+    }
+
+    .allblogs-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+
+    .allblogs-title {
+        font-weight: 600;
+        color: #111827;
+    }
+
+    .allblogs-subtitle {
+        color: #6B7280;
+    }
+</style>

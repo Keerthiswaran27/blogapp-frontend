@@ -1,0 +1,470 @@
+﻿@page "/reader/search"
+@layout AuthorLayour
+@using BSService.Services
+@using BlogApp1.Shared
+@inject BlogService BSService
+@inject IJSRuntime JS
+@inject NavigationManager NavigationManager
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="allblogs-container">
+    <MudPaper Elevation="8" Class="allblogs-shell">
+        <!-- Header -->
+        <div class="allblogs-header">
+            <div>
+                <MudText Typo="Typo.h4" Class="allblogs-title">
+                    All Blogs
+                </MudText>
+                <MudText Typo="Typo.body2" Class="allblogs-subtitle">
+                    Browse, search and open any blog for detailed review
+                </MudText>
+            </div>
+        </div>
+
+        <!-- Search + Filters -->
+        <div class="allblogs-filters">
+            <MudTextField T="string" @bind-Value="searchQuery"
+                          Placeholder="Search by title or author..."
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Search"
+                          Variant="Variant.Outlined"
+                          Margin="Margin.Dense"
+                          Class="allblogs-search"
+                          Immediate="true"
+                          DebounceInterval="250"
+                          SearchFunc="SearchSuggestions"
+                          Clearable="true" />
+
+            
+
+            <MudSelect T="string" @bind-Value="selectedCategoryFilter"
+                       Variant="Variant.Outlined"
+                       Margin="Margin.Dense"
+                       Label="Domain"
+                       Class="allblogs-filter-select">
+                <MudSelectItem Value="@("All")">All</MudSelectItem>
+                <MudSelectItem Value="@("Machine Learning")">Machine Learning</MudSelectItem>
+                <MudSelectItem Value="@("Artificial Intelligence")">Artificial Intelligence</MudSelectItem>
+                <MudSelectItem Value="@("Lifestyle")">Lifestyle</MudSelectItem>
+                <MudSelectItem Value="@("Travel")">Travel</MudSelectItem>
+                <MudSelectItem Value="@("Education")">Education</MudSelectItem>
+                <MudSelectItem Value="@("Food")">Food</MudSelectItem>
+            </MudSelect>
+
+            <MudSelect T="string" @bind-Value="selectedSort"
+                       Variant="Variant.Outlined"
+                       Margin="Margin.Dense"
+                       Label="Sort"
+                       Class="allblogs-filter-select">
+                <MudSelectItem Value="@("Latest")">Latest</MudSelectItem>
+                <MudSelectItem Value="@("Oldest")">Oldest</MudSelectItem>
+                <MudSelectItem Value="@("MostViewed")">Most Viewed</MudSelectItem>
+                <MudSelectItem Value="@("MostLiked")">Most Liked</MudSelectItem>
+            </MudSelect>
+            <MudIconButton Icon="@Icons.Material.Rounded.Home"  Color="Color.Primary" @onclick="GoToHome"/>
+
+        </div>
+
+        <MudContainer Class="mt-4" Style="padding:0;">
+            @if(IsLoading)
+            {
+                <MudContainer MaxWidth="MaxWidth.ExtraLarge" Style="height:600px;display:flex;justify-content:center;align-items:center;">
+                    <MudProgressCircular Indeterminate="true" Color="Color.Primary" Size="Size.Large" Class="mt-5" />
+                </MudContainer>
+            }
+            else
+            {
+                @if (!SavedBlogs.Any())
+                {
+                    <MudContainer Class="pa-6 d-flex flex-column align-center" Style="background-color:transparent" Elevation="0">
+                        <MudText Typo="Typo.h6">No related blogs found</MudText>
+                        <MudText Typo="Typo.body2" Class="mb-3">No blogs found under the filter conditions.</MudText>
+                    </MudContainer>
+                }
+                else
+                {
+                    @if (isGridView)
+                    {
+                        <MudGrid Class="mt-3">
+                            @foreach (var blog in SavedBlogs)
+                            {
+                                <MudItem xs="12" sm="12" md="6">
+                                    <MudContainer Style="margin-top:10px;margin-bottom:10px;padding:0;" Elevation="3">
+                                        <MudGrid>
+                                            @* content *@
+                                            <MudItem sm="9" md="8">
+                                                <MudContainer Style="margin:0;padding:0;min-height:230px;">
+                                                    <MudContainer Style="padding:10px;">
+                                                        <MudStack Row="true" AlignItems="AlignItems.Start" Spacing="2">
+                                                            <MudAvatar Size="Size.Small" Style="background-color:#3f51b5;color:white;">@(blog.AuthorName.First())</MudAvatar>
+                                                            <MudText Typo="Typo.caption" Style="padding-top:3px;">@blog.AuthorName</MudText>
+                                                        </MudStack>
+                                                        <MudText Typo="Typo.h5" Style="color:#212121;cursor:pointer;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-weight:800;" @onclick="@(() => GoToBlog(blog.Slug, blog.Id))" Class="mt-3">@blog.Title</MudText>
+                                                        <MudText Typo="Typo.body1" Truncate="true" style="color:#757575">
+                                                            @((blog.Content?.Length > 150) ? blog.Content.Substring(3, 100) + "..." : blog.Content.Substring(3, blog.Content.Length - 3))
+                                                        </MudText>
+                                                    </MudContainer>
+                                                </MudContainer>
+                                                <MudContainer Style="display:flex;justify-content:start;padding-left:10px;width:100%">
+                                                    <MudStack Row="true">
+                                                        <MudStack Row="true" Spacing="0" Style="padding-top:3px">
+                                                            <MudText Typo="Typo.caption" Style="color:#312121">@blog.CreatedAt?.Date.ToString("MMM dd")</MudText>
+                                                            <MudCheckBox T="bool" Value="@likes.Contains(blog.Id)" ValueChanged="@(checkedValue => ToggleLike(blog.Id, checkedValue))" Color="Color.Secondary" Size="Size.Small" CheckedIcon="@Icons.Material.Filled.Favorite" UncheckedIcon="@Icons.Material.Filled.FavoriteBorder" Class="like-button-css ml-3"></MudCheckBox>
+                                                            <MudText Typo="Typo.caption" Style="color:#312121;" Class="ml-1">@blog.LikesCount</MudText>
+                                                            <MudIconButton Icon="@Icons.Material.Filled.Comment" Size="Size.Small" @onclick="@(() => GoToBlog(blog.Slug, blog.Id))" Class="share-css ml-3" />
+                                                            <MudText Typo="Typo.caption" Style="color:#312121;" Class="ml-1"></MudText>
+                                                        </MudStack>
+                                                    </MudStack>
+                                                    <MudSpacer />
+                                                    <MudStack Row="true">
+                                                        <MudStack Row="true" Spacing="0">
+                                                            <MudCheckBox T="bool" Value="@saves.Contains(blog.Id)" ValueChanged="@(checkedValue => ToggleSave(blog.Id, checkedValue))" Color="Color.Secondary" Size="Size.Small" CheckedIcon="@Icons.Material.Filled.Bookmark" UncheckedIcon="@Icons.Material.Filled.BookmarkBorder" Style="padding-top:3px;" Class="like-button-css save-css ml-2"></MudCheckBox>
+                                                            <MudIconButton Icon="@Icons.Material.Filled.Share" Size="Size.Small" @onclick="@(() => SharePost(blog))" Class="share-css ml-2" />
+
+                                                            <MudMenu Icon="@Icons.Material.Filled.MoreHoriz" Size="Size.Small" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter" Class="share-css ml-2">
+                                                                <MudContainer Style="height:100%;width:220px;padding:0;">
+                                                                    <MudText Typo="Typo.subtitle2" Style="padding:10px;margin-left:6px;">Not Interested</MudText>
+                                                                    <MudDivider></MudDivider>
+                                                                    <MudText Typo="Typo.subtitle2" Style="padding:10px;margin-left:6px;">Follow author</MudText>
+                                                                    <MudDivider></MudDivider>
+                                                                    <MudText Typo="Typo.subtitle2" Style="padding:10px;margin-left:6px;">Mute author</MudText>
+                                                                    <MudText Typo="Typo.subtitle2" Style="padding:10px;margin-left:6px;padding-top:0;;color:rgb(170,0,0)">Report story...</MudText>
+                                                                </MudContainer>
+                                                            </MudMenu>
+
+                                                        </MudStack>
+                                                    </MudStack>
+                                                </MudContainer>
+                                            </MudItem>
+                                            <MudItem sm="3" md="4">
+                                                <MudContainer style="display:flex;justify-content:center;align-items:center;width:100%;height:100%;padding:0;cursor:pointer;" @onclick="@(() => GoToBlog(blog.Slug, blog.Id))">
+                                                    <MudImage Src="@blog.CoverImageUrl" Alt="@blog.Title" Style="width:100%;height:100%;padding-top:50px;padding-bottom:40px;padding-right:20px;" />
+                                                </MudContainer>
+                                            </MudItem>
+                                        </MudGrid>
+                                    </MudContainer>
+                                    <MudDivider />
+                                </MudItem>
+                            }
+                        </MudGrid>
+                    }
+                    else
+                    {
+                        <MudContainer Style="padding:0;">
+                            <MudText Typo="Typo.h5" Class="ml-3 mt-3 allblogs-title">Trending Blogs</MudText>
+                            <div Style="display: flex; overflow-x: auto; gap: 16px; padding: 10px;max-width:100%;min-width350px;">
+                                @foreach (var b in blogs.OrderByDescending(t => t.ViewCount).Take(10))
+                                {
+
+
+                                    <MudPaper Class="pa-2 mb-3" Elevation="4" Style="background: rgba(193, 188, 214,0.3);height:100%;min-width:300px;">
+                                        <img src="@b.CoverImageUrl" alt="@b.Title" style="width:100%;height:140px;object-fit:cover;cursor:pointer;border-radius:4px" />
+                                        <MudText Typo="Typo.subtitle1" Class="mt-2 font-bold cursor-pointer" Style="color:#004d40" @onclick="@(() => GoToBlog(b.Slug, b.Id))">@b.Title</MudText>
+                                        <MudText Typo="Typo.caption">@b.AuthorName • @b.CreatedAt?.ToString("MMM dd, yyyy")</MudText>
+                                        <MudText Typo="Typo.body2" Class="mt-1">@b.Content.Substring(3, 50)...</MudText>
+
+                                        <div class="d-flex align-center mt-2">
+                                            
+                                            <MudSpacer />
+                                            <MudButton Variant="Variant.Outlined" Size="Size.Small" OnClick="@(() => GoToBlog(b.Slug, b.Id))">Read</MudButton>
+                                        </div>
+                                    </MudPaper>
+                                }
+                            </div>
+                            <MudText Typo="Typo.h5" Class="ml-3 mt-3 allblogs-title">Categories</MudText>
+                            <div Style="display: flex; overflow-x: auto; gap: 16px; padding: 10px;max-width:100%;min-width350px;">
+                                @foreach (var item in CategoryCard)
+                                {
+                                    <MudPaper Class="pa-2 mb-3" Elevation="4" Style="background: rgba(193, 188, 214,0.3);height:100%;min-width:300px;">
+                                        <img src="@item.Image" alt="@item.Title" style="width:100%;height:200px;object-fit:cover;border-radius:4px" @onclick="@(() => GoToCategory(item.Title.ToLower()))" />
+                                        <MudText Typo="Typo.subtitle1" Align="Align.Center" Class="mt-1 font-bold cursor-pointer" Style="color:#004d40" @onclick="@(() => GoToCategory(item.Title.ToLower()))">@item.Title</MudText>
+
+                                    </MudPaper>
+                                }
+                            </div>
+                            <MudText Typo="Typo.h5" Class="ml-3 mt-3 allblogs-title">Top Authors</MudText>
+                            <div Style="display: flex; overflow-x: auto; gap: 16px; padding: 10px;max-width:100%;min-width350px;">
+                                @foreach (var item in TopAuthors)
+                                {
+                                    <MudPaper Class="pa-2 mb-3" Elevation="4" Style="background: rgba(193, 188, 214,0.3);height:100%;min-width:300px;">
+                                        <MudContainer style="background-color: rgba(0, 0, 0, 0.06);width:100%;height:200px;display:flex;justify-content:center;align-items:center;border-radius:10px;border:1px solid #3d387a">
+                                            <MudAvatar Style="height:150px; width:150px; font-size:4rem;background-color:#a8a5cf;color:white;">
+                                                @item.Initials
+                                            </MudAvatar>
+                                        </MudContainer>
+                                        <MudText Typo="Typo.h6" Align="Align.Center" Class="mt-1 font-bold cursor-pointer" Style="color:#004d40">@item.Name</MudText>
+                                        @* <MudText Typo="Typo.subtitle2" Align="Align.Center" Class="mt-1" Style="color:lightgrey">@item.Stat</MudText> *@
+                                    </MudPaper>
+                                }
+                            </div>
+                            
+                        </MudContainer>
+                    }
+                }
+            }
+        </MudContainer>
+    </MudPaper>
+</MudContainer>
+
+
+
+@code {
+    private bool IsLoading = true;
+    private bool isGridView { get; set; } = false;
+    private string searchQuery { get; set; } = "";
+    private string selectedSort { get; set; } = "Latest";
+    private string selectedCategoryFilter { get; set; } = "All";
+    private List<BlogDto> blogs = new();
+    private List<int> likes = new();
+    private List<int> saves = new();
+    private List<BlogDto> allBlogs = new();
+    private string _selectedCategory = "All";
+    private string _sortOption = "Latest";
+    private void GoToHome()
+    {
+        searchQuery = "";
+        count = 0;
+        isGridView = false;
+        
+    }
+    private List<TopAuthor> TopAuthors = new()
+    {
+        new TopAuthor { Name = "Wahran", Initials = "W", Stat = "12 blogs", AvatarColor = "#E0F2F1" },
+        new TopAuthor { Name = "Keerthiswaran", Initials = "K", Stat = "4.3k views", AvatarColor = "#E3F2FD" },
+        new TopAuthor { Name = "Santha Seelan", Initials = "SS", Stat = "9 blogs", AvatarColor = "#FFF3E0" },
+        new TopAuthor { Name = "Arjun Mehta", Initials = "AM", Stat = "3.8k views", AvatarColor = "#F3E5F5" },
+        new TopAuthor { Name = "Sara Lee", Initials = "SL", Stat = "15 blogs", AvatarColor = "#FCE4EC" },
+        new TopAuthor { Name = "David Kim", Initials = "DK", Stat = "5.1k views", AvatarColor = "#E8EAF6" }
+    };
+    private class TopAuthor
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Initials { get; set; } = string.Empty;
+        public string Stat { get; set; } = string.Empty;
+        public string AvatarColor { get; set; } = "#ECEFF1";
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        allBlogs = await BSService.GetAllBlogsAsync();
+        blogs = allBlogs; // show all initially
+        likes = await BSService.GetLikedIdAsync();
+        saves = await BSService.GetSavedIdAsync();
+        IsLoading = false;
+    }
+    private IEnumerable<BlogDto> SavedBlogs => FilterAndSort(blogs);
+    private async Task<IEnumerable<string>> SearchSuggestions(string value, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            return allBlogs.Select(b => b.Title).Distinct();
+
+        // Return titles if they match the search, OR if their author matches the search
+        return allBlogs
+            .Where(b => b.Title.Contains(value, StringComparison.OrdinalIgnoreCase) ||
+                        b.AuthorName.Contains(value, StringComparison.OrdinalIgnoreCase))
+            .Select(b => b.Title) // suggestions are still titles
+            .Distinct();
+    }
+
+
+    private int count = 0;
+    private IEnumerable<BlogDto> FilterAndSort(IEnumerable<BlogDto> list)
+    {
+        var q = list;
+
+        if (!string.IsNullOrWhiteSpace(searchQuery))
+            q = q.Where(b => b.Title.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
+                             b.AuthorName.Contains(searchQuery, StringComparison.OrdinalIgnoreCase));
+
+        if (selectedCategoryFilter != "All")
+            q = q.Where(b => b.Domain == selectedCategoryFilter);
+
+        q = selectedSort switch
+        {
+            "Oldest" => q.OrderBy(b => b.CreatedAt),
+            "MostViewed" => q.OrderByDescending(b => b.ViewCount),
+            "MostLiked" => q.OrderByDescending(b => b.LikesCount),
+            _ => q.OrderByDescending(b => b.CreatedAt),
+        };
+        Console.WriteLine($"it entered the search function{++count}"); 
+        if(count>=2)
+        {
+            isGridView=true;
+        }
+        return q;
+    }
+    private async Task GoToBlog(string slug, int BlogId)
+    {
+        NavigationManager.NavigateTo($"/blog/{slug}");
+        await BSService.TrackReadAsync(BlogId);
+    }
+    private async Task ToggleLike(int blogId, bool isChecked)
+    {
+        if (isChecked)
+        {
+            if (!likes.Contains(blogId))
+            {
+                likes.Add(blogId);
+                foreach (var blog in blogs)
+                {
+                    if (blog.Id == blogId)
+                    {
+                        blog.LikesCount += 1;
+                    }
+                }
+                var success = await BSService.ToggleLikeAsync(blogId, true);
+                if (!success)
+                {
+                    likes.Remove(blogId);
+                }
+            }
+        }
+        else
+        {
+            if (likes.Contains(blogId))
+            {
+                likes.Remove(blogId);
+                foreach (var blog in blogs)
+                {
+                    if (blog.Id == blogId)
+                    {
+                        blog.LikesCount -= 1;
+                    }
+                }
+                var success = await BSService.ToggleLikeAsync(blogId, false);
+                if (!success)
+                {
+                    likes.Add(blogId);
+                }
+
+            }
+        }
+    }
+    private async Task ToggleSave(int blogId, bool isChecked)
+    {
+        if (isChecked)
+        {
+            if (!saves.Contains(blogId))
+            {
+                saves.Add(blogId);
+                var success = await BSService.ToggleSaveAsync(blogId, true);
+                if (!success)
+                {
+                    saves.Remove(blogId);
+                }
+            }
+        }
+        else
+        {
+            if (saves.Contains(blogId))
+            {
+                saves.Remove(blogId);
+                var success = await BSService.ToggleSaveAsync(blogId, false);
+                if (!success)
+                {
+                    saves.Add(blogId);
+                }
+
+            }
+        }
+    }
+    private async Task SharePost(BlogDto blog)
+    {
+        if (blog == null) return;
+
+        var title = blog.Title;
+        var text = blog?.Content.Substring(0, 50);
+        var url = $"https://myblog.com/blog/{blog.Slug}";
+
+        await JS.InvokeVoidAsync("navigator.share", new
+        {
+            title,
+            text,
+            url
+        });
+    }
+    private List<CardItem> CategoryCard = new List<CardItem>
+    {
+        new CardItem { Image="Images/Ai.jpg", Title="Artificial Intelligence"},
+        new CardItem { Image="Images/ML.jpeg", Title="Machine Learning"},
+        new CardItem { Image="Images/Food.jpg", Title="Food"},
+        new CardItem { Image="Images/Travel.jpg", Title="Travel"},
+        new CardItem { Image="Images/LifeStyle.jpeg", Title="LifeStyle"},
+        new CardItem { Image="Images/Health.jpg", Title="Health"}
+    };
+    public class CardItem
+    {
+        public string Image { get; set; }
+        public string Title { get; set; }
+    }
+    private void GoToCategory(string title)
+    {
+        NavigationManager.NavigateTo($"/category/{title}");
+    }
+}
+<style>
+    body {
+        background: linear-gradient(to bottom, #ffffff, #ede9ff);
+        height: 100%;
+    }
+
+    .like-button-css .mud-icon-button {
+        padding: 0;
+    }
+    .share-css {
+        padding: 0 !important;
+    }
+
+    .card-css {
+        min-width: 250px;
+        max-width: 250px;
+        flex: 0 0 auto;
+    }
+</style>
+
+<style>
+    .allblogs-container {
+        margin-top: 24px;
+        margin-bottom: 24px;
+        min-height:90vh;
+        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .allblogs-shell {
+        padding: 24px 28px;
+        border-radius: 24px;
+        /* background: linear-gradient(135deg, #EEF2FF 0%, #E0ECFF 100%); */
+        background: rgba(233, 230, 245,0.4);
+        box-shadow: 0 24px 40px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(148, 163, 184, 0.12);
+    }
+
+    .allblogs-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+
+    .allblogs-title {
+        font-weight: 600;
+        color: #111827;
+    }
+
+    .allblogs-subtitle {
+        color: #6B7280;
+    }
+
+    .allblogs-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 16px;
+        align-items: center;
+    }
+
+    .allblogs-search {
+        flex: 1 1 280px;
+    }
+
+    .allblogs-filter-select {
+        min-width: 160px;
+    }
+</style>

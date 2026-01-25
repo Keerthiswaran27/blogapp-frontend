@@ -1,0 +1,434 @@
+﻿@page "/editor"
+@layout EditorLayout
+@using BlogApp1.Shared.EditorModels
+@using MudBlazor
+@inject EditorService EditorService
+@inject NavigationManager Navigation
+
+<PageTitle>Editor Dashboard</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="editor-dashboard-container">
+    <MudPaper Elevation="8" Class="editor-dashboard-shell">
+        <!-- HEADER -->
+        <div class="editor-dashboard-header">
+            <div>
+                <MudText Typo="Typo.h4" Class="editor-dashboard-title">
+                    Editor Dashboard
+                </MudText>
+                <MudText Typo="Typo.body2" Class="editor-dashboard-subtitle">
+                    Monitor blog review activity and manage pending submissions
+                </MudText>
+            </div>
+            <div class="editor-dashboard-header-actions">
+                <MudButton Variant="Variant.Outlined"
+                           Color="Color.Primary"
+                           StartIcon="@Icons.Material.Filled.Refresh"
+                           OnClick="LoadDataAsync"
+                           Disabled="@IsLoading">
+                    @(IsLoading ? "Refreshing..." : "Refresh")
+                </MudButton>
+            </div>
+        </div>
+
+        <!-- SUMMARY CARDS -->
+        <MudGrid Spacing="3" Class="editor-dashboard-stats">
+            <MudItem xs="12" sm="6" md="3">
+                <MudCard Class="stat-card card-animation" Elevation="4">
+                    <MudCardContent Class="stat-card-content">
+                        <MudAvatar Icon="@Icons.Material.Filled.HourglassEmpty"
+                                   Color="Color.Warning"
+                                   Variant="Variant.Filled"
+                                   Class="stat-card-icon" />
+                        <div>
+                            <MudText Typo="Typo.caption" Class="stat-card-label">
+                                Pending Blogs
+                            </MudText>
+                            <MudText Typo="Typo.h5" Class="stat-card-value">
+                                @(Stats?.PendingCount ?? 0)
+                            </MudText>
+                        </div>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+
+            <MudItem xs="12" sm="6" md="3">
+                <MudCard Class="stat-card card-animation" Elevation="4">
+                    <MudCardContent Class="stat-card-content">
+                        <MudAvatar Icon="@Icons.Material.Filled.CheckCircle"
+                                   Color="Color.Success"
+                                   Variant="Variant.Filled"
+                                   Class="stat-card-icon" />
+                        <div>
+                            <MudText Typo="Typo.caption" Class="stat-card-label">
+                                Approved Blogs
+                            </MudText>
+                            <MudText Typo="Typo.h5" Class="stat-card-value">
+                                @(Stats?.ApprovedCount ?? 0)
+                            </MudText>
+                        </div>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+
+            <MudItem xs="12" sm="6" md="3">
+                <MudCard Class="stat-card card-animation" Elevation="4">
+                    <MudCardContent Class="stat-card-content">
+                        <MudAvatar Icon="@Icons.Material.Filled.Cancel"
+                                   Color="Color.Error"
+                                   Variant="Variant.Filled"
+                                   Class="stat-card-icon" />
+                        <div>
+                            <MudText Typo="Typo.caption" Class="stat-card-label">
+                                Rejected Blogs
+                            </MudText>
+                            <MudText Typo="Typo.h5" Class="stat-card-value">
+                                @(Stats?.RejectedCount ?? 0)
+                            </MudText>
+                        </div>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+
+            <MudItem xs="12" sm="6" md="3">
+                <MudCard Class="stat-card card-animation" Elevation="4">
+                    <MudCardContent Class="stat-card-content">
+                        <MudAvatar Icon="@Icons.Material.Filled.History"
+                                   Color="Color.Primary"
+                                   Variant="Variant.Filled"
+                                   Class="stat-card-icon" />
+                        <div>
+                            <MudText Typo="Typo.caption" Class="stat-card-label">
+                                Revision Requests
+                            </MudText>
+                            <MudText Typo="Typo.h5" Class="stat-card-value">
+                                @(Stats?.RevisionCount ?? 0)
+                            </MudText>
+                        </div>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+        </MudGrid>
+
+        <!-- TABS + TABLES -->
+        <MudPaper Elevation="4" Class="editor-dashboard-tabs mt-6">
+            <MudTabs Elevation="0"
+                     Rounded="true"
+                     ApplyEffectsToContainer="false"
+                     PanelClass="pa-4">
+                <!-- Pending -->
+                <MudTabPanel Text="Pending">
+                    <ChildContent>
+                        <MudTable Items="@PendingBlogs"
+                                  Hover="true"
+                                  Dense="true"
+                                  Loading="@IsLoading"
+                                  Elevation="0"
+                                  Class="editor-table">
+                            <HeaderContent>
+                                <MudTh>Title</MudTh>
+                                <MudTh>Author</MudTh>
+                                <MudTh>Submitted</MudTh>
+                                <MudTh class="text-right">Action</MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd>@context.Title</MudTd>
+                                <MudTd>@context.AuthorName</MudTd>
+                                <MudTd>@context.CreatedAt?.ToLocalTime().ToString("dd MMM yyyy, HH:mm")</MudTd>
+                                <MudTd Class="text-right">
+                                    <MudButton Variant="Variant.Filled"
+                                               Color="Color.Primary"
+                                               Size="Size.Small"
+                                               Class="rounded-pill"
+                                               OnClick="@(() => ReviewBlog(context.Id))">
+                                        Review
+                                    </MudButton>
+                                </MudTd>
+                            </RowTemplate>
+                        </MudTable>
+                    </ChildContent>
+                </MudTabPanel>
+
+                <!-- Approved -->
+                <MudTabPanel Text="Approved">
+                    <ChildContent>
+                        <MudTable Items="@ApprovedBlogs"
+                                  Hover="true"
+                                  Dense="true"
+                                  Elevation="0"
+                                  Class="editor-table">
+                            <HeaderContent>
+                                <MudTh>Title</MudTh>
+                                <MudTh>Author</MudTh>
+                                <MudTh>Reviewed By</MudTh>
+                                <MudTh>Approved On</MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd>@context.Title</MudTd>
+                                <MudTd>@context.AuthorName</MudTd>
+                                <MudTd>@context.EditorUid</MudTd>
+                                <MudTd>@context.ReviewedAt?.ToLocalTime().ToString("dd MMM yyyy, HH:mm")</MudTd>
+                            </RowTemplate>
+                        </MudTable>
+                    </ChildContent>
+                </MudTabPanel>
+
+                <!-- Rejected -->
+                <MudTabPanel Text="Rejected">
+                    <ChildContent>
+                        <MudTable Items="@RejectedBlogs"
+                                  Hover="true"
+                                  Dense="true"
+                                  Elevation="0"
+                                  Class="editor-table">
+                            <HeaderContent>
+                                <MudTh>Title</MudTh>
+                                <MudTh>Author</MudTh>
+                                <MudTh>Reason</MudTh>
+                                <MudTh>Rejected On</MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd>@context.Title</MudTd>
+                                <MudTd>@context.AuthorName</MudTd>
+                                <MudTd>
+                                    <MudChip T="string"
+                                             Color="Color.Error"
+                                             Size="Size.Small"
+                                             Variant="Variant.Outlined">
+                                        @(context.RejectionReason ?? "No reason specified")
+                                    </MudChip>
+                                </MudTd>
+                                <MudTd>@context.ReviewedAt?.ToLocalTime().ToString("dd MMM yyyy")</MudTd>
+                            </RowTemplate>
+                        </MudTable>
+                    </ChildContent>
+                </MudTabPanel>
+            </MudTabs>
+        </MudPaper>
+
+        <!-- FOOTER INFO -->
+        <div class="editor-dashboard-footer">
+            <MudText Typo="Typo.caption" Color="Color.Secondary">
+                Last refreshed: @LastRefresh.ToString("dd MMM yyyy HH:mm:ss")
+            </MudText>
+        </div>
+    </MudPaper>
+</MudContainer>
+
+<style>
+    .editor-dashboard-container {
+        margin-top: 24px;
+        margin-bottom: 24px;
+        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .editor-dashboard-shell {
+        padding: 28px 32px;
+        border-radius: 24px;
+        /* background: linear-gradient(135deg, #EEF2FF 0%, #E0ECFF 100%); */
+        background: rgba(233, 230, 245,0.4);
+        box-shadow: 0 24px 40px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(148, 163, 184, 0.12);
+    }
+
+    .editor-dashboard-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+    }
+
+    .editor-dashboard-title {
+        font-weight: 600;
+        color: #111827;
+    }
+
+    .editor-dashboard-subtitle {
+        color: #6B7280;
+    }
+
+    .editor-dashboard-header-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .editor-dashboard-stats {
+        margin-bottom: 16px;
+    }
+
+    .stat-card {
+        border-radius: 18px;
+        background-color: #ffffff;
+    }
+
+    .stat-card-content {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 18px !important;
+    }
+
+    .stat-card-icon {
+        height: 40px;
+        width: 40px;
+        font-size: 1.4rem;
+    }
+
+    .stat-card-label {
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.75rem;
+        color: #6B7280;
+    }
+
+    .stat-card-value {
+        font-weight: 600;
+        color: #111827;
+    }
+
+    .editor-dashboard-tabs {
+        border-radius: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 10px 20px rgba(148, 163, 184, 0.25);
+    }
+
+    .editor-table,
+    .editor-table * {
+        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+        .editor-table .mud-table-head {
+            background-color: #F9FAFB;
+        }
+
+            .editor-table .mud-table-head th {
+                font-weight: 600;
+                color: #111827;
+            }
+
+        .editor-table .mud-table-body .mud-table-row:hover {
+            background-color: rgba(99, 102, 241, 0.04);
+            cursor: pointer;
+        }
+
+    .editor-dashboard-footer {
+        margin-top: 16px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    /* Animation */
+    @@keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .card-animation {
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+        .card-animation:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+
+        .card-animation:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .card-animation:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+
+        .card-animation:nth-child(4) {
+            animation-delay: 0.2s;
+        }
+
+    body {
+        background: #FBFAFF;
+    }
+    (max-width: 768px) {
+        .editor-dashboard-shell
+
+    {
+        padding: 16px 14px;
+        border-radius: 18px;
+    }
+
+    .editor-dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    }
+</style>
+
+@code {
+    private DashboardStatsModel? Stats;
+    private List<BlogSummaryModel> PendingBlogs = new();
+    private List<BlogSummaryModel> ApprovedBlogs = new();
+    private List<BlogSummaryModel> RejectedBlogs = new();
+
+    private double[]? DonutData;
+    private string[]? DonutLabels;
+
+    private readonly double[] WeeklyData = { 12, 19, 15, 25, 22, 30, 28 };
+    private readonly string[] WeeklyLabels = { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
+
+    private bool IsLoading = false;
+    private DateTime LastRefresh = DateTime.Now;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadDataAsync();
+    }
+
+    private async Task LoadDataAsync()
+    {
+        IsLoading = true;
+        StateHasChanged();
+
+        try
+        {
+            Stats = await EditorService.GetDashboardStatsAsync();
+
+            DonutData = new double[] { Stats.ApprovedCount, Stats.RejectedCount };
+            DonutLabels = new string[] { "Approved", "Rejected" };
+
+            var tasks = new[]
+            {
+                EditorService.GetBlogsAsync("pending"),
+                EditorService.GetBlogsAsync("approved"),
+                EditorService.GetBlogsAsync("rejected")
+            };
+
+            var results = await Task.WhenAll(tasks);
+
+            PendingBlogs = results[0];
+            ApprovedBlogs = results[1];
+            RejectedBlogs = results[2];
+
+            LastRefresh = DateTime.Now;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+        }
+        finally
+        {
+            IsLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private void ReviewBlog(int id)
+    {
+        Navigation.NavigateTo($"/editor/review/{id}");
+    }
+}

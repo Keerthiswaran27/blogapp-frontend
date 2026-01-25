@@ -1,0 +1,439 @@
+﻿@page "/"
+@using BlogApp1.Client.Components.Auth
+@inject IDialogService DialogService
+
+@inject HttpClient Http
+<PageTitle>Home</PageTitle>
+
+
+
+
+<MudPaper Class="hero-modern d-flex align-start justify-center">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <MudGrid Class="hero-inner mt-5" AlignItems="AlignItems.Center" Spacing="3">
+            <!-- LEFT -->
+            <MudItem xs="12" md="7">
+                <MudText Typo="Typo.h2" Class="hero-title">
+                    Middle<span class="accent">Man</span>
+                </MudText>
+
+                <MudText Typo="Typo.subtitle1" Class="hero-description">
+                    The smartest way to explore blogs using AI.
+                    <br />
+                    Ask questions. Get instant answers. No scrolling.
+                </MudText>
+
+                <ul class="hero-points">
+                    <li>⚡ Powered by AI &amp; RAG</li>
+                    <li>📚 Understand blogs instantly</li>
+                    <li>🔍 Search smarter, not harder</li>
+                </ul>
+
+                <div class="hero-actions">
+                    <MudButton
+                               Variant="Variant.Filled"
+                               Class="btn-primary"
+                               @onclick="OpenLogin" >
+                        Start Exploring
+                    </MudButton>
+
+                    <MudButton Color="Color.Default"
+                               Variant="Variant.Outlined"
+                               Class="btn-secondary"
+                               Href="/blogs">
+                        Browse Blogs
+                    </MudButton>
+                </div>
+            </MudItem>
+
+            <!-- RIGHT -->
+            <MudItem xs="12" md="5" Class="hero-right">
+                <MudPaper Class="mock-card" Elevation="8">
+                    <MudText Typo="Typo.subtitle1" Class="mock-title">
+                        Ask MiddleMan
+                    </MudText>
+                    <MudText Typo="Typo.body2" Class="mock-question">
+                        "What is the blog about AI agents?"
+                    </MudText>
+                    <MudPaper Class="mock-answer mb-2" Elevation="0">
+                        🤖 This blog explains how AI agents use memory, tools, and reasoning to solve tasks efficiently...
+                    </MudPaper>
+                    <MudPaper Class="mock-answer" Elevation="0">
+                        🤖 This post breaks down how AI agents use reasoning and tools to tackle complex tasks.
+                    </MudPaper>
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
+    </MudContainer>
+</MudPaper>
+
+<!-- STATS -->
+<MudContainer Class="stats" Style="border-top:1px solid #1E1B4B">
+    <MudGrid Spacing="3" Justify="Justify.Center">
+        <MudItem xs="12" sm="4">
+            <MudPaper Class="stat-card">
+                <MudText Typo="Typo.h5">⚡ Fast</MudText>
+                <MudText Typo="Typo.body2">Instant AI responses</MudText>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="4">
+            <MudPaper Class="stat-card">
+                <MudText Typo="Typo.h5">📚 Smart</MudText>
+                <MudText Typo="Typo.body2">Blog-aware answers</MudText>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="4">
+            <MudPaper Class="stat-card">
+                <MudText Typo="Typo.h5">🔒 Secure</MudText>
+                <MudText Typo="Typo.body2">Your data stays yours</MudText>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+<!-- HOW IT WORKS -->
+<MudPaper Class="how-it-works" Style="border-top:1px solid #1E1B4B">
+    <MudContainer>
+        <MudText Typo="Typo.h4" Align="Align.Center">How MiddleMan Works</MudText>
+
+        <MudGrid Class="steps" Spacing="3" Justify="Justify.Center">
+            <MudItem xs="12" sm="4">
+                <MudPaper Class="step" Elevation="0">
+                    <span>1</span>
+                    <MudText Typo="Typo.h6">Upload Blogs</MudText>
+                    <MudText Typo="Typo.body2">
+                        Your blogs are indexed and converted into embeddings.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" sm="4">
+                <MudPaper Class="step" Elevation="0">
+                    <span>2</span>
+                    <MudText Typo="Typo.h6">Ask Anything</MudText>
+                    <MudText Typo="Typo.body2">
+                        Users ask questions in natural language.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" sm="4">
+                <MudPaper Class="step" Elevation="0">
+                    <span>3</span>
+                    <MudText Typo="Typo.h6">AI Answers</MudText>
+                    <MudText Typo="Typo.body2">
+                        AI fetches relevant data and responds accurately.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
+    </MudContainer>
+</MudPaper>
+
+<!-- FEATURES -->
+<MudPaper Class="features" Style="border-top:1px solid #1E1B4B">
+    <MudContainer>
+        <MudText Typo="Typo.h4" Align="Align.Center">Why Choose MiddleMan?</MudText>
+
+        <MudGrid Class="feature-grid" Spacing="3" Justify="Justify.Center">
+            <MudItem xs="12" sm="6" md="3">
+                <MudPaper Class="feature-box">
+                    <MudText Typo="Typo.h6">🧠 RAG Powered</MudText>
+                    <MudText Typo="Typo.body2">
+                        Uses Retrieval-Augmented Generation for accurate answers.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" sm="6" md="3">
+                <MudPaper Class="feature-box">
+                    <MudText Typo="Typo.h6">⚡ Ultra Fast</MudText>
+                    <MudText Typo="Typo.body2">
+                        Groq-powered inference ensures blazing speed.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" sm="6" md="3">
+                <MudPaper Class="feature-box">
+                    <MudText Typo="Typo.h6">📈 Scalable</MudText>
+                    <MudText Typo="Typo.body2">
+                        Handles thousands of queries with ease.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" sm="6" md="3">
+                <MudPaper Class="feature-box">
+                    <MudText Typo="Typo.h6">🎨 Modern UI</MudText>
+                    <MudText Typo="Typo.body2">
+                        Clean, responsive, and user-friendly design.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
+    </MudContainer>
+</MudPaper>
+
+<!-- CTA -->
+<MudPaper Class="cta" Style="border-top:1px solid #1E1B4B">
+    <MudContainer Class="text-center">
+        <MudText Typo="Typo.h4">Ready to Experience Smart Search?</MudText>
+        <MudText Typo="Typo.subtitle2">
+            Start exploring blogs with AI-powered intelligence.
+        </MudText>
+
+        <MudButton 
+                   Variant="Variant.Filled"
+                   Class="btn-primary large"
+                   @onclick="OpenLogin">
+            Get Started
+        </MudButton>
+    </MudContainer>
+</MudPaper>
+
+<!-- FOOTER -->
+<MudPaper Class="footer-root">
+    <MudText Typo="Typo.caption" Align="Align.Center">
+        © 2025 MiddleMan • Built with ❤️ &amp; AI
+    </MudText>
+</MudPaper>
+
+@code {
+    bool topdrawer = true;
+    private void OpenLogin()
+    {
+        var parameters = new DialogParameters();
+        var options = new DialogOptions()
+        {
+            MaxWidth = MaxWidth.Small,
+            BackdropClick = true,
+            CloseButton = true,
+            BackgroundClass = "dialog-backdrop-blur"
+        };
+
+        DialogService.Show<LoginDialog>("", parameters, options);
+    }
+}
+<style>
+    /* GENERAL */
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* HERO */
+    .hero-modern {
+        min-height: 95vh;
+        background: linear-gradient(to bottom, #ffffff, #ede9ff);
+        padding: 4rem 2rem;
+    }
+
+    .hero-inner {
+        width: 100%;
+    }
+
+    .hero-title {
+        font-size: 3.2rem;
+        font-weight: 800;
+        color: #1f1f1f;
+    }
+
+    .accent {
+        color: #4b4687;
+    }
+
+    .hero-description {
+        margin-top: 1rem;
+        font-size: 1.1rem;
+        color: #555;
+        line-height: 1.7;
+    }
+
+    .hero-points {
+        list-style: none;
+        padding: 0;
+        margin: 1.5rem 0;
+    }
+
+        .hero-points li {
+            margin-bottom: 0.6rem;
+            font-size: 1rem;
+            color: #444;
+        }
+
+    /* BUTTONS */
+    .hero-actions {
+        margin-top: 2rem;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .btn-primary {
+        background: #3d387a;
+        color: white;
+        padding: 0.9rem 2.2rem;
+        border-radius: 12px;
+        font-weight: 600;
+        text-transform: none;
+    }
+
+        .btn-primary:hover {
+            background: #2e2969;
+        }
+
+    .btn-secondary {
+        border: 2px solid black;
+        color: black;
+        padding: 0.9rem 2.2rem;
+        border-radius: 12px;
+        font-weight: 600;
+        text-transform: none;
+    }
+
+        .btn-secondary:hover {
+            color: black;
+            box-shadow: 0 12px 24px -8px rgba(79, 70, 229, 0.4);
+        }
+
+    /* RIGHT MOCK UI */
+    .hero-right {
+        display: flex;
+        justify-content: center;
+    }
+
+    .mock-card {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        width: 100%;
+        max-width: 380px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    }
+
+    .mock-title {
+        font-weight: 600;
+        margin-bottom: 0.8rem;
+        color: #3d387a;
+    }
+
+    .mock-question {
+        font-style: italic;
+        color: #555;
+        margin-bottom: 1rem;
+    }
+
+    .mock-answer {
+        background: #f5f4ff;
+        padding: 1rem;
+        border-radius: 10px;
+        font-size: 0.95rem;
+        color: #333;
+    }
+
+    /* RESPONSIVE */
+    @@media (max-width: 900px) {
+        .hero-inner
+
+    {
+        text-align: center;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-title {
+        font-size: 2.4rem;
+    }
+
+    }
+
+    /* STATS */
+    .stats {
+        padding: 3rem 1.5rem;
+        background: #fff;
+    }
+
+    .stat-card {
+        padding: 2rem;
+        border-radius: 16px;
+        background: #f7f6ff;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        text-align: center;
+    }
+
+    /* HOW IT WORKS */
+    .how-it-works {
+        padding: 4rem 2rem;
+        background: #f7f6ff;
+        text-align: center;
+    }
+
+    .steps {
+        margin-top: 2rem;
+
+    }
+
+    .step span {
+        display: inline-block;
+        background: #4b4687;
+        color: white;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+    }
+    .step{
+        padding: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+        border-radius: 16px;
+    }
+
+    /* FEATURES */
+    .features {
+        padding: 4rem 2rem;
+        background: #ffffff;
+        text-align: center;
+    }
+
+    .feature-grid {
+        margin-top: 2rem;
+    }
+
+    .feature-box {
+        background: #f7f6ff;
+        padding: 2rem;
+        border-radius: 16px;
+        transition: transform 0.3s;
+    }
+
+        .feature-box:hover {
+            transform: translateY(-6px);
+        }
+
+    /* CTA */
+    .cta {
+        background: linear-gradient(135deg,#C7D2FE,#E9D5FF);
+        color: black;
+        text-align: center;
+        padding: 4rem 2rem;
+    }
+
+        .cta .large {
+            margin-top: 1.5rem;
+        }
+
+    /* FOOTER */
+    .footer-root {
+        background: #ede9ff;
+        padding: 1.5rem;
+        text-align: center;
+        color: #555;
+    }
+
+</style>

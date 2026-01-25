@@ -1,0 +1,294 @@
+﻿@page "/editor/comments"
+@layout EditorLayout
+@using BlogApp1.Shared.EditorModels
+@using BlogApp1.Client.Services
+@inject EditorService FeedbackService
+@inject ISnackbar Snackbar
+@using MudBlazor
+@inject NavigationManager Nav
+
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="editor-comments-container">
+    <MudPaper Elevation="8" Class="editor-comments-card">
+        <!-- Header -->
+        <div class="editor-header">
+            <div class="editor-header-title">
+                @* <MudAvatar Color="Color.Primary"
+                           Icon="@Icons.Material.Filled.Feedback"
+                           Size="Size.Medium"
+                           Class="editor-header-avatar" /> *@
+                <div>
+                    <MudText Typo="Typo.h4" Class="editor-header-text-primary">
+                        Editor Feedback History
+                    </MudText>
+                    <MudText Typo="Typo.body2" Class="editor-header-text-secondary">
+                        Review all feedback and comments on submitted blogs
+                    </MudText>
+                </div>
+            </div>
+
+            <MudChip T="string" Color="Color.Primary"
+                     Variant="Variant.Filled"
+                     Size="Size.Small"
+                     Class="editor-header-chip">
+                @(_feedbackList?.Count ?? 0) feedbacks
+            </MudChip>
+        </div>
+
+        <!-- Table / Empty state -->
+        @if (_feedbackList?.Any() == true)
+        {
+            <MudTable Items="_feedbackList"
+                      Hover="true"
+                      Dense="true"
+                      Bordered="false"
+                      Striped="false"
+                      Elevation="0"
+                      Breakpoint="Breakpoint.Sm"
+                      Class="editor-table">
+
+                <HeaderContent>
+                    <MudTh>Blog ID</MudTh>
+                    <MudTh>Type</MudTh>
+                    <MudTh>Message</MudTh>
+                    <MudTh>Editor</MudTh>
+                    <MudTh>Date</MudTh>
+                    <MudTh>Action</MudTh>
+                </HeaderContent>
+
+                <RowTemplate>
+                    <MudTd DataLabel="Blog ID" Class="editor-cell-id">
+                        #@context.BlogId
+                    </MudTd>
+
+                    <MudTd DataLabel="Type">
+                        <MudChip T="string"
+                                 Color="@GetColor(context.FeedbackType)"
+                                 Variant="Variant.Filled"
+                                 Size="Size.Small"
+                                 Class="editor-chip-type">
+                            @context.FeedbackType.ToUpper()
+                        </MudChip>
+                    </MudTd>
+
+                    <MudTd DataLabel="Message" Class="editor-cell-message">
+                        @context.Message
+                    </MudTd>
+
+                    <MudTd DataLabel="Editor">
+                        <div class="editor-cell-editor">
+                            <MudAvatar Size="Size.Small"
+                                       Variant="Variant.Filled"
+                                       Color="Color.Primary"
+                                       Class="editor-cell-editor-avatar">
+                                @context.EditorName?[..1].ToUpper()
+                            </MudAvatar>
+                            <MudText Typo="Typo.body2" Class="editor-cell-editor-name">
+                                @context.EditorName
+                            </MudText>
+                        </div>
+                    </MudTd>
+
+                    <MudTd DataLabel="Date" Class="editor-cell-date">
+                        <MudText Typo="Typo.body2">
+                            @context.CreatedAt.ToLocalTime().ToString("MMM dd, yyyy")
+                        </MudText>
+                        <MudText Typo="Typo.caption" Color="Color.Secondary">
+                            @context.CreatedAt.ToLocalTime().ToString("hh:mm tt")
+                        </MudText>
+                    </MudTd>
+                    <MudTd DataLabel="Action" Class="editor-cell-date">
+                        <MudButton Variant="Variant.Text" Size="Size.Small" OnClick="()=>NavigateToBlog(context.BlogId)">
+                            View Blog</MudButton>
+                    </MudTd>
+                </RowTemplate>
+
+                <PagerContent>
+                    <MudTablePager PageSize="10"
+                                   PageSizeOptions="new int[] { 10, 25, 50 }" />
+                </PagerContent>
+            </MudTable>
+        }
+        else
+        {
+            <div class="editor-empty">
+                <MudIcon Icon="@Icons.Material.Outlined.Feedback"
+                         Size="Size.Large"
+                         Color="Color.Default"
+                         Class="mb-2" />
+                <MudText Typo="Typo.h6" Class="mb-1">
+                    No feedback yet
+                </MudText>
+                <MudText Typo="Typo.body2" Color="Color.Secondary">
+                    Feedback will appear here when editors review blogs.
+                </MudText>
+            </div>
+        }
+    </MudPaper>
+</MudContainer>
+
+<style>
+    /* Layout container – match sidebar/app background */
+    .editor-comments-container {
+        padding-top: 32px;
+        padding-bottom: 32px;
+        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    /* Outer card – soft white card on slightly tinted background */
+    .editor-comments-card {
+        border-radius: 24px;
+        padding: 32px 36px;
+        /* background: linear-gradient(135deg, #EEF2FF 0%, #E0ECFF 100%); */
+        background: rgba(233, 230, 245,0.4);
+        box-shadow:
+            0 24px 40px rgba(15, 23, 42, 0.12),
+            0 0 0 1px rgba(148, 163, 184, 0.12);
+    }
+
+    /* Header area */
+    .editor-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+    }
+
+    .editor-header-title {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .editor-header-avatar {
+        background-color: #6366F1 !important; /* Primary like app bar */
+        color: white !important;
+    }
+
+    body {
+        background: #FBFAFF;
+    }
+    .editor-header-text-primary {
+        color: #111827;
+        font-weight: 600;
+    }
+
+    .editor-header-text-secondary {
+        color: #6B7280;
+    }
+
+    .editor-header-chip {
+        background-color: #6366F1 !important;
+        color: #ffffff !important;
+        font-weight: 500;
+        border-radius: 999px;
+    }
+
+    /* TABLE – single font family for all cells */
+    .editor-table,
+    .editor-table * {
+        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .editor-table .mud-table-container {
+        background-color: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 10px 20px rgba(148, 163, 184, 0.25);
+        overflow: hidden;
+    }
+
+    .editor-table .mud-table-head {
+        background: #F9FAFB;
+    }
+
+    .editor-table .mud-table-head th {
+        font-weight: 600;
+        color: #111827;
+    }
+
+    .editor-table .mud-table-body .mud-table-row:hover {
+        background-color: rgba(99, 102, 241, 0.04);
+    }
+
+    .editor-cell-id {
+        color: #6B7280;
+        font-weight: 500;
+    }
+
+    .editor-cell-message {
+        max-width: 480px;
+        white-space: normal;
+    }
+
+    .editor-chip-type {
+        font-weight: 600;
+        letter-spacing: 0.04em;
+    }
+
+    .editor-cell-editor {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .editor-cell-editor-avatar {
+        background-color: #6366F1 !important;
+        color: #ffffff !important;
+        font-size: 0.75rem;
+    }
+
+    .editor-cell-editor-name {
+        color: #111827;
+    }
+
+    .editor-cell-date {
+        min-width: 140px;
+    }
+
+    /* Empty state */
+    .editor-empty {
+        padding: 40px 0;
+        text-align: center;
+        color: #6B7280;
+    }
+
+     (max-width: 768px) {
+        .editor-comments-card {
+            padding: 20px 16px;
+            border-radius: 16px;
+        }
+
+        .editor-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+    }
+</style>
+
+@code {
+    private List<EditorFeedbackDto> _feedbackList = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            _feedbackList = await FeedbackService.GetAllFeedbackAsync();
+        }
+        catch
+        {
+            Snackbar.Add("Failed to load editor feedback.", Severity.Error);
+        }
+    }
+    private void NavigateToBlog(int blogId)
+    {
+        Nav.NavigateTo($"/editor/review/{blogId}");
+    }
+    private Color GetColor(string type) => type?.ToLower() switch
+    {
+        "rejected" => Color.Error,
+        "revise"   => Color.Warning,
+        "approved" => Color.Success,
+        _          => Color.Primary
+    };
+}

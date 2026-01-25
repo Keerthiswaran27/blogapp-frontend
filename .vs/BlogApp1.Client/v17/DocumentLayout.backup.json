@@ -1,0 +1,1166 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\blogapp1.client.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:blogapp1.client.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AuthController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\author\\aibloggenerator.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\author\\aibloggenerator.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\author\\aiblog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\author\\aiblog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\testing.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\testing.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\services\\chathistoryapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:services\\chathistoryapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\author\\manualwriter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\author\\manualwriter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\editor\\blogreview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\editor\\blogreview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\reader\\reader.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\reader\\reader.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\services\\blogaiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:services\\blogaiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\services\\aiblogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:services\\aiblogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\reader\\aiblog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\reader\\aiblog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\author\\authorchathistory.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\author\\authorchathistory.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\samplechat.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\samplechat.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\chathistory.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\chathistory.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\layout\\readerlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:layout\\readerlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\layout\\authorlayour.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:layout\\authorlayour.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\layout\\adminlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:layout\\adminlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\reader\\search.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\reader\\search.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\reader\\category.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\reader\\category.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\reader\\chat.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\reader\\chat.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\reader\\blogdetail.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\reader\\blogdetail.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\reader\\library.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\reader\\library.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\services\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:services\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\services\\blogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:services\\blogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\author\\authorlibrary.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\author\\authorlibrary.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\components\\auth\\editurldialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:components\\auth\\editurldialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\components\\auth\\viewimagedialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:components\\auth\\viewimagedialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\reader\\profile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\reader\\profile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\admin\\admin.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\admin\\admin.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\admin\\userview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\admin\\userview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\admin\\userprofileupdate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\admin\\userprofileupdate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|c:\\users\\keerthi\\source\\repos\\wisework\\middleman\\blogapp-frontend\\blogapp1.client\\pages\\admin\\userpanel.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F346AEA2-E97D-4486-A961-B290E9FA524D}|BlogApp1.Client.csproj|solutionrelative:pages\\admin\\userpanel.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\BlogsController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AiBlogController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\BlogGenerateRequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\BlogAiController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\IngestionSerivce.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\LlmService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\ChatHistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\ChatHistoryController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\BlogData.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\RagQueryRequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\RetrievalService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\ChatController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\GeminiService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\RagIngestionController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\RAGController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\RAGIngestionService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\EmbeddingService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\BlogIngestionRequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\RagIngestionDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\QdrantService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\NewsletterController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\GeminiController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AdminBlogController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AdminController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\CommentsController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\EditorController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\ImageController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\SiteController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\BlogUserDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\BlogUser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\CollectionResponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\Stats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\BlogListDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\blogDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\AiBlogDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 125,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BlogApp1.Client",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\BlogApp1.Client.csproj",
+              "RelativeDocumentMoniker": "BlogApp1.Client.csproj",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\BlogApp1.Client.csproj",
+              "RelativeToolTip": "BlogApp1.Client.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-25T14:34:50.123Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Testing.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Testing.razor",
+              "RelativeDocumentMoniker": "Pages\\Testing.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Testing.razor",
+              "RelativeToolTip": "Pages\\Testing.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-17T17:10:37.111Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ChatHistoryApiService.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Services\\ChatHistoryApiService.cs",
+              "RelativeDocumentMoniker": "Services\\ChatHistoryApiService.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Services\\ChatHistoryApiService.cs",
+              "RelativeToolTip": "Services\\ChatHistoryApiService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-12T13:31:32.602Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "BlogsController.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\BlogsController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\BlogsController.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\BlogsController.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\BlogsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T16:38:56.971Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AiBlog.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Author\\AiBlog.razor",
+              "RelativeDocumentMoniker": "Pages\\Author\\AiBlog.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Author\\AiBlog.razor",
+              "RelativeToolTip": "Pages\\Author\\AiBlog.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-12T15:19:28.157Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AiBlogGenerator.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Author\\AiBlogGenerator.razor",
+              "RelativeDocumentMoniker": "Pages\\Author\\AiBlogGenerator.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Author\\AiBlogGenerator.razor",
+              "RelativeToolTip": "Pages\\Author\\AiBlogGenerator.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-12T14:31:58.516Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T16:38:57.532Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BlogReview.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Editor\\BlogReview.razor",
+              "RelativeDocumentMoniker": "Pages\\Editor\\BlogReview.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Editor\\BlogReview.razor",
+              "RelativeToolTip": "Pages\\Editor\\BlogReview.razor",
+              "ViewState": "AgIAAO0AAAAAAAAAAAAAAEYAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-19T06:05:18.349Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "AiBlogController.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AiBlogController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AiBlogController.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AiBlogController.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AiBlogController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAADUAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-11T11:57:22.203Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BlogAiService.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Services\\BlogAiService.cs",
+              "RelativeDocumentMoniker": "Services\\BlogAiService.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Services\\BlogAiService.cs",
+              "RelativeToolTip": "Services\\BlogAiService.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAQwEUAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-12T15:18:37.694Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ManualWriter.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Author\\ManualWriter.razor",
+              "RelativeDocumentMoniker": "Pages\\Author\\ManualWriter.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Author\\ManualWriter.razor",
+              "RelativeToolTip": "Pages\\Author\\ManualWriter.razor",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAAwLsAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-12T15:26:24.344Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "BlogGenerateRequest.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\BlogGenerateRequest.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\BlogGenerateRequest.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\BlogGenerateRequest.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\BlogGenerateRequest.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-12T14:41:56.316Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "BlogAiController.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\BlogAiController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\BlogAiController.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\BlogAiController.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\BlogAiController.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAAwEYAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-12T14:42:47.573Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Reader.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Reader\\Reader.razor",
+              "RelativeDocumentMoniker": "Pages\\Reader\\Reader.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Reader\\Reader.razor",
+              "RelativeToolTip": "Pages\\Reader\\Reader.razor",
+              "ViewState": "AgIAAPIBAAAAAAAAAAAAAL8AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-19T05:54:31.6Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAlwB0AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T16:47:35.446Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AiBlogService.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Services\\AiBlogService.cs",
+              "RelativeDocumentMoniker": "Services\\AiBlogService.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Services\\AiBlogService.cs",
+              "RelativeToolTip": "Services\\AiBlogService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-11T11:57:55.414Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AiBlog.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Reader\\AiBlog.razor",
+              "RelativeDocumentMoniker": "Pages\\Reader\\AiBlog.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Reader\\AiBlog.razor",
+              "RelativeToolTip": "Pages\\Reader\\AiBlog.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-11T11:58:32.579Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AuthorChatHistory.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Author\\AuthorChatHistory.razor",
+              "RelativeDocumentMoniker": "Pages\\Author\\AuthorChatHistory.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Author\\AuthorChatHistory.razor",
+              "RelativeToolTip": "Pages\\Author\\AuthorChatHistory.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-19T04:28:28.263Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "SampleChat.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\SampleChat.razor",
+              "RelativeDocumentMoniker": "Pages\\SampleChat.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\SampleChat.razor",
+              "RelativeToolTip": "Pages\\SampleChat.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-12T12:32:56.745Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ChatHistory.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\ChatHistory.razor",
+              "RelativeDocumentMoniker": "Pages\\ChatHistory.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\ChatHistory.razor",
+              "RelativeToolTip": "Pages\\ChatHistory.razor",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAQwIUAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-12T13:34:49.275Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ReaderLayout.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Layout\\ReaderLayout.razor",
+              "RelativeDocumentMoniker": "Layout\\ReaderLayout.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Layout\\ReaderLayout.razor",
+              "RelativeToolTip": "Layout\\ReaderLayout.razor",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADoAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-19T04:26:40.915Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "AuthorLayour.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Layout\\AuthorLayour.razor",
+              "RelativeDocumentMoniker": "Layout\\AuthorLayour.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Layout\\AuthorLayour.razor",
+              "RelativeToolTip": "Layout\\AuthorLayour.razor",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-12T13:51:50.205Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "AdminLayout.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Layout\\AdminLayout.razor",
+              "RelativeDocumentMoniker": "Layout\\AdminLayout.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Layout\\AdminLayout.razor",
+              "RelativeToolTip": "Layout\\AdminLayout.razor",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-19T04:26:37.121Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Chat.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Reader\\Chat.razor",
+              "RelativeDocumentMoniker": "Pages\\Reader\\Chat.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Reader\\Chat.razor",
+              "RelativeToolTip": "Pages\\Reader\\Chat.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-11T11:28:44.208Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Category.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Reader\\Category.razor",
+              "RelativeDocumentMoniker": "Pages\\Reader\\Category.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Reader\\Category.razor",
+              "RelativeToolTip": "Pages\\Reader\\Category.razor",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAAAKEAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-12T13:59:47.318Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Search.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Reader\\Search.razor",
+              "RelativeDocumentMoniker": "Pages\\Reader\\Search.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Reader\\Search.razor",
+              "RelativeToolTip": "Pages\\Reader\\Search.razor",
+              "ViewState": "AgIAAKUAAAAAAAAAAAAAAKwAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-07T16:30:02.05Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\appsettings.json",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\appsettings.json",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\appsettings.json",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-11T21:08:47.827Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Program.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Program.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Program.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-11T11:56:29.22Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "IngestionSerivce.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\IngestionSerivce.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Services\\IngestionSerivce.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\IngestionSerivce.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Services\\IngestionSerivce.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAgwEgAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-11T20:12:23.756Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "LlmService.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\LlmService.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Services\\LlmService.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\LlmService.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Services\\LlmService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-12T12:08:30.591Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "BlogDetail.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Reader\\BlogDetail.razor",
+              "RelativeDocumentMoniker": "Pages\\Reader\\BlogDetail.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Reader\\BlogDetail.razor",
+              "RelativeToolTip": "Pages\\Reader\\BlogDetail.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-12T13:59:45.624Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "ChatHistory.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\ChatHistory.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\ChatHistory.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\ChatHistory.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\ChatHistory.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAIwCIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-12T13:17:56.008Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ChatService.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Services\\ChatService.cs",
+              "RelativeDocumentMoniker": "Services\\ChatService.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Services\\ChatService.cs",
+              "RelativeToolTip": "Services\\ChatService.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwAwAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-12T12:27:55.234Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Library.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Reader\\Library.razor",
+              "RelativeDocumentMoniker": "Pages\\Reader\\Library.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Reader\\Library.razor",
+              "RelativeToolTip": "Pages\\Reader\\Library.razor",
+              "ViewState": "AgIAAKoBAAAAAAAAAAAAAA8DAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-07T16:45:58.944Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "BlogService.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Services\\BlogService.cs",
+              "RelativeDocumentMoniker": "Services\\BlogService.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Services\\BlogService.cs",
+              "RelativeToolTip": "Services\\BlogService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-12T13:32:16.995Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "ChatHistoryController.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\ChatHistoryController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\ChatHistoryController.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\ChatHistoryController.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\ChatHistoryController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAQwEUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-12T13:21:34.696Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "BlogData.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\BlogData.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\BlogData.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\BlogData.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\BlogData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-12T13:16:59.294Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "RagQueryRequest.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\RagQueryRequest.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\RagQueryRequest.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\RagQueryRequest.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\RagQueryRequest.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAUwCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-12T11:47:28.563Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "RetrievalService.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\RetrievalService.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Services\\RetrievalService.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\RetrievalService.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Services\\RetrievalService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-12T11:48:06.396Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "ChatController.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\ChatController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\ChatController.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\ChatController.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\ChatController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAACoAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-12T11:55:36.836Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "GeminiService.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\GeminiService.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Services\\GeminiService.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\GeminiService.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Services\\GeminiService.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAYwEYAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-12T12:21:27.931Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "RagIngestionController.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\RagIngestionController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\RagIngestionController.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\RagIngestionController.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\RagIngestionController.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAABoAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-11T20:06:58.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "RAGController.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\RAGController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\RAGController.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\RAGController.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\RAGController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA0AAABgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T16:36:41.681Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "RAGIngestionService.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\RAGIngestionService.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Services\\RAGIngestionService.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\RAGIngestionService.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Services\\RAGIngestionService.cs",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAAwLYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-11T20:11:58.57Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "EmbeddingService.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\EmbeddingService.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Services\\EmbeddingService.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\EmbeddingService.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Services\\EmbeddingService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAmwCkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-11T19:57:51.296Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "BlogIngestionRequest.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\BlogIngestionRequest.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\BlogIngestionRequest.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\BlogIngestionRequest.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\BlogIngestionRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T16:40:13.686Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "RagIngestionDto.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\RagIngestionDto.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\RagIngestionDto.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\RagIngestionDto.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\RagIngestionDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-11T20:10:05.302Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "QdrantService.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\QdrantService.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Services\\QdrantService.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Services\\QdrantService.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Services\\QdrantService.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwDIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-11T19:58:47.988Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "NewsletterController.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\NewsletterController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\NewsletterController.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\NewsletterController.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\NewsletterController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T16:36:44.22Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "GeminiController.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\GeminiController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\GeminiController.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\GeminiController.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\GeminiController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T16:38:51.007Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "AdminBlogController.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AdminBlogController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AdminBlogController.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AdminBlogController.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AdminBlogController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T16:38:58.708Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T16:38:58.101Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "CommentsController.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\CommentsController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\CommentsController.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\CommentsController.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\CommentsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T16:38:56.281Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "EditorController.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\EditorController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\EditorController.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\EditorController.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\EditorController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T16:38:51.852Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "ImageController.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\ImageController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\ImageController.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\ImageController.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\ImageController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T16:36:18.889Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "SiteController.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\SiteController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\SiteController.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Server\\Controllers\\SiteController.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Server\\Controllers\\SiteController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T17:29:29.341Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "AuthorLibrary.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Author\\AuthorLibrary.razor",
+              "RelativeDocumentMoniker": "Pages\\Author\\AuthorLibrary.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Author\\AuthorLibrary.razor",
+              "RelativeToolTip": "Pages\\Author\\AuthorLibrary.razor",
+              "ViewState": "AgIAALgAAAAAAAAAAAAAAM4AAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-07T16:46:54.485Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "EditUrlDialog.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Components\\Auth\\EditUrlDialog.razor",
+              "RelativeDocumentMoniker": "Components\\Auth\\EditUrlDialog.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Components\\Auth\\EditUrlDialog.razor",
+              "RelativeToolTip": "Components\\Auth\\EditUrlDialog.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-07T16:26:46.845Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ViewImageDialog.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Components\\Auth\\ViewImageDialog.razor",
+              "RelativeDocumentMoniker": "Components\\Auth\\ViewImageDialog.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Components\\Auth\\ViewImageDialog.razor",
+              "RelativeToolTip": "Components\\Auth\\ViewImageDialog.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-07T16:42:35.638Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "BlogUserDto.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\BlogUserDto.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\BlogUserDto.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\BlogUserDto.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\BlogUserDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T16:42:14.046Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "BlogUser.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\BlogUser.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\BlogUser.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\BlogUser.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\BlogUser.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAwF0AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T16:41:36.564Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "CollectionResponse.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\CollectionResponse.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\CollectionResponse.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\CollectionResponse.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\CollectionResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T16:42:11.676Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "Stats.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\Stats.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\Stats.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\Stats.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\Stats.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T16:40:32.373Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "BlogListDto.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\BlogListDto.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\BlogListDto.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\BlogListDto.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\BlogListDto.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T16:40:17.104Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "blogDto.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\blogDto.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\blogDto.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\blogDto.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\blogDto.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAwwDMAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T16:40:12.813Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
+              "Title": "AiBlogDto.cs",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\AiBlogDto.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\AiBlogDto.cs",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\WholeBlogApp\\BlogApp1.Shared\\AiBlogDto.cs",
+              "RelativeToolTip": "..\\..\\..\\WholeBlogApp\\BlogApp1.Shared\\AiBlogDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T16:39:24.335Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "Profile.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Reader\\Profile.razor",
+              "RelativeDocumentMoniker": "Pages\\Reader\\Profile.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Reader\\Profile.razor",
+              "RelativeToolTip": "Pages\\Reader\\Profile.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-07T16:32:27.953Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "UserView.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Admin\\UserView.razor",
+              "RelativeDocumentMoniker": "Pages\\Admin\\UserView.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Admin\\UserView.razor",
+              "RelativeToolTip": "Pages\\Admin\\UserView.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-07T16:30:08.529Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "UserProfileUpdate.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Admin\\UserProfileUpdate.razor",
+              "RelativeDocumentMoniker": "Pages\\Admin\\UserProfileUpdate.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Admin\\UserProfileUpdate.razor",
+              "RelativeToolTip": "Pages\\Admin\\UserProfileUpdate.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-07T16:30:05.273Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "UserPanel.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Admin\\UserPanel.razor",
+              "RelativeDocumentMoniker": "Pages\\Admin\\UserPanel.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Admin\\UserPanel.razor",
+              "RelativeToolTip": "Pages\\Admin\\UserPanel.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-07T16:30:03.811Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Home.razor",
+              "RelativeToolTip": "Pages\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-07T16:28:58.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Admin.razor",
+              "DocumentMoniker": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Admin\\Admin.razor",
+              "RelativeDocumentMoniker": "Pages\\Admin\\Admin.razor",
+              "ToolTip": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\Pages\\Admin\\Admin.razor",
+              "RelativeToolTip": "Pages\\Admin\\Admin.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-07T16:26:52.586Z"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 224,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,249 @@
+﻿@page "/author/write/ai"
+@layout ReaderLayout
+@using BlogApp1.Shared
+@using BlogApp1.Client.Services
+@inject BlogAiService AiService
+@inject ImageApiService ImageApiService
+@using BSService.Services
+@inject BlogService BlogService
+@inject ISnackbar Snackbar
+@inject NavigationManager NavManager
+
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-6">
+
+    <MudCard Elevation="10" Class="rounded-xl">
+
+        <MudTabs Rounded="true" Elevation="0" @bind-ActivePanelIndex="activeIndex">
+
+            <!-- TAB 1 -->
+            <MudTabPanel Text="Prompt">
+                <MudCardContent>
+
+                    <MudText Typo="Typo.h6" Class="mb-4">
+                        AI Blog Prompt
+                    </MudText>
+
+                    <MudTextField Label="Topic"
+                                  @bind-Value="request.Topic"
+                                  Variant="Variant.Outlined"
+                                  Class="mb-3"
+                                  Required />
+
+                    <MudTextField Label="Tone (Friendly, Formal...)"
+                                  @bind-Value="request.Tone"
+                                  Variant="Variant.Outlined"
+                                  Class="mb-3" />
+
+                    <MudNumericField T="int"
+                                     Label="Word Count"
+                                     @bind-Value="request.WordCount"
+                                     Variant="Variant.Outlined"
+                                     Class="mb-3" />
+
+                    <MudTextField Label="Custom Prompt (Optional)"
+                                  @bind-Value="request.CustomPrompt"
+                                  Variant="Variant.Outlined"
+                                  Lines="4"
+                                  Class="mb-4" />
+
+                    <MudButton Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               OnClick="Generate"
+                               Disabled="loading"
+                               FullWidth
+                               Size="Size.Large">
+
+                        @if (loading)
+                        {
+                            <MudProgressCircular Indeterminate="true"  />
+                            <span class="ml-2">Generating...</span>
+                        }
+                        else
+                        {
+                            <span>Generate Blog</span>
+                        }
+
+                    </MudButton>
+
+                </MudCardContent>
+            </MudTabPanel>
+
+            <!-- TAB 2 -->
+            <MudTabPanel Text="Blog Info">
+
+                <MudCardContent>
+
+                    @if (result == null)
+                    {
+                        <MudText Typo="Typo.subtitle1" Color="Color.Secondary">
+                            Generate a blog to see results 👈
+                        </MudText>
+                    }
+                    else
+                    {
+                        <!-- AI IMAGE -->
+                        @if (!string.IsNullOrWhiteSpace(result.ImageUrl))
+                        {
+                            <MudImage Src="@result.ImageUrl"
+                                      Alt="@result.Title"
+                                      Class="mb-4 rounded-xl"
+                                      Width="100" />
+                        }
+
+                        <MudText Typo="Typo.h4">@result.Title</MudText>
+
+                        <!-- TAGS -->
+                        <MudChipSet T="string" Class="my-3">
+                            @foreach (var tag in result.Tags)
+                            {
+                                <MudChip Color="Color.Primary" Variant="Variant.Outlined">
+                                    @tag
+                                </MudChip>
+                            }
+                        </MudChipSet>
+
+                        <MudDivider />
+
+                        <!-- CONTENT -->
+                        <MudPaper Class="p-4 mt-3 rounded-xl" Elevation="1">
+                            @((MarkupString)result.Content)
+                        </MudPaper>
+
+                        <!-- ============ IMAGE UPLOAD SECTION ============ -->
+                        <MudDivider Class="my-4" />
+
+                        <MudText Typo="Typo.h6">Upload Cover Image</MudText>
+
+                        <MudFileUpload T="IReadOnlyList<IBrowserFile>"
+                                       Accept=".png,.jpg,.jpeg"
+                                       MaximumFileCount="1"
+                                       OnFilesChanged="OnInputFileChanged">
+
+                            <ActivatorContent>
+                                <MudPaper Class="pa-6 text-center"
+                                          Outlined="true"
+                                          Style="height:200px;">
+                                    <MudText>
+                                        Drag & drop image<br />
+                                        or click to select
+                                    </MudText>
+                                </MudPaper>
+                            </ActivatorContent>
+
+                        </MudFileUpload>
+
+                        @if (file != null)
+                        {
+                            <MudStack Row Spacing="2" Class="mt-3">
+                                <MudButton OnClick="Upload"
+                                           Variant="Variant.Filled"
+                                           Color="Color.Primary">
+                                    Upload
+                                </MudButton>
+
+                                <MudButton OnClick="ClearAsync"
+                                           Variant="Variant.Outlined">
+                                    Clear
+                                </MudButton>
+                            </MudStack>
+                        }
+
+                        @if (!string.IsNullOrEmpty(UploadedUrl))
+                        {
+                            <MudImage Src="@UploadedUrl"
+                                      Width="200"
+                                      Class="mt-3 rounded-xl" />
+                        }
+
+                        <!-- ============ PUBLISH BUTTON ============ -->
+                        <MudDivider Class="my-4" />
+
+                        <MudButton Color="Color.Success"
+                                   Variant="Variant.Filled"
+                                   FullWidth
+                                   OnClick="PublishBlogAsync">
+                            🚀 Publish Blog
+                        </MudButton>
+                    }
+
+                </MudCardContent>
+
+            </MudTabPanel>
+
+        </MudTabs>
+
+    </MudCard>
+
+</MudContainer>
+
+@code{
+    BlogGenerateRequest request = new();
+BlogGenerateResponse? result;
+bool loading = false;
+int activeIndex = 0;
+
+IBrowserFile? file;
+string? UploadedUrl;
+
+async Task Generate()
+{
+    loading = true;
+    result = await AiService.GenerateBlog(request);
+    activeIndex = 1;
+    loading = false;
+}
+
+// FILE HANDLING
+void OnInputFileChanged(InputFileChangeEventArgs e)
+{
+    file = e.GetMultipleFiles(1).FirstOrDefault();
+}
+
+async Task Upload()
+{
+    if (file is not null)
+    {
+        UploadedUrl =
+            await ImageApiService.UploadImageAsync(file);
+    }
+}
+
+void ClearAsync()
+{
+    file = null;
+    UploadedUrl = null;
+}
+
+// PUBLISH
+async Task PublishBlogAsync()
+{
+    if (result == null)
+        return;
+
+    var blog = new NewBlogRequest
+    {
+        Title = result.Title,
+        Slug = result.Slug,
+        Content = result.Content,
+        Domain = result.Domain,
+        Summary = result.Summary,
+        MetaDescription = result.Meta_Description,
+        Tags = result.Tags,
+        CoverImageUrl = UploadedUrl
+    };
+
+    try
+    {
+        var created =
+            await BlogService.CreateBlogAsync(blog);
+
+        Snackbar.Add("Blog published successfully!", Severity.Success);
+        NavManager.NavigateTo($"/author/blog/{created.Slug}");
+    }
+    catch (Exception ex)
+    {
+        Snackbar.Add(ex.Message, Severity.Error);
+    }
+}
+
+}

@@ -1,0 +1,133 @@
+﻿@using MudBlazor
+@using ASService.Services
+@inject AuthService UserService
+
+<MudDialog MaxWidth="MaxWidth.Medium" FullWidth="true" Style="background: linear-gradient(135deg, #E0E7FF, #FAE8FF);">
+    <TitleContent>
+        <MudText Typo="Typo.h6">Choose your tech vibes</MudText>
+    </TitleContent>
+
+    <DialogContent>
+        <MudText Typo="Typo.body2" Class="mb-2">
+            Pick a few topics you enjoy. This helps tune your feed.
+        </MudText>
+
+        <MudGrid Class="mb-3">
+            @foreach (var topic in _allTopics)
+            {
+                <MudItem xs="12" sm="6">
+                    <MudCheckBox T="bool"
+                                 Value="@IsSelected(topic)"
+                                 ValueChanged="@(v => Toggle(topic, v))"
+                                 Label="@topic" />
+                </MudItem>
+            }
+        </MudGrid>
+
+
+
+        @if (_isSaving)
+        {
+            <MudProgressLinear Indeterminate="true" Color="Color.Primary" Class="mb-2" />
+        }
+
+        @if (!string.IsNullOrEmpty(_error))
+        {
+            <MudText Color="Color.Error" Typo="Typo.caption">@_error</MudText>
+        }
+    </DialogContent>
+
+    <DialogActions>
+        <MudButton Color="Color.Default"
+                   Variant="Variant.Outlined"
+                   Disabled="_isSaving"
+                   OnClick="Skip">
+            Skip for now
+        </MudButton>
+
+        <MudButton class="lock-button"
+                   Variant="Variant.Filled"
+                   Disabled="_isSaving || !_selectedTopics.Any()"
+                   OnClick="SubmitPreferences">
+            Lock in my stack
+        </MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] private IMudDialogInstance MudDialog { get; set; } = default!;
+
+    private readonly List<string> _allTopics = new()
+    {
+        "C# / .NET",
+        "Blazor",
+        "Web Development",
+        "Supabase",
+        "Databases",
+        "Cloud & DevOps",
+        "AI / Machine Learning",
+        "RAG & LLMs",
+        "Frontend UX",
+        "APIs & Microservices"
+    };
+
+    private HashSet<string> _selectedTopics = new();
+    private bool _isSaving = false;
+    private string? _error;
+
+    private bool IsSelected(string topic) => _selectedTopics.Contains(topic);
+
+    private void Toggle(string topic, bool isChecked)
+    {
+        if (isChecked)
+            _selectedTopics.Add(topic);
+        else
+            _selectedTopics.Remove(topic);
+    }
+
+    private void Skip()
+    {
+        MudDialog.Cancel();
+    }
+
+    private async Task SubmitPreferences()
+    {
+        _error = null;
+        _isSaving = true;
+
+        try
+        {
+            if (!_selectedTopics.Any())
+            {
+                _error = "Please pick at least one topic or skip.";
+                _isSaving = false;
+                return;
+            }
+            foreach(var topic in _selectedTopics)
+            {
+                Console.WriteLine(topic);
+            }
+            await UserService.UpdateUserPreferencesAsync(_selectedTopics.ToList());
+            MudDialog.Close();
+        }
+        catch (Exception ex)
+        {
+            _error = $"Could not save preferences: {ex.Message}";
+        }
+        finally
+        {
+            _isSaving = false;
+        }
+    }
+}
+<style>
+    .lock-button {
+        font-weight: bold;
+        color: white;
+        background-color: #3d387a;
+    }
+
+        .lock-button:hover {
+            background-color: #2e2969;
+        }
+</style>

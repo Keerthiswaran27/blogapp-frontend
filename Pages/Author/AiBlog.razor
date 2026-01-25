@@ -1,0 +1,35 @@
+﻿@page "/ai"
+@using BlogApp1.Client.Services 
+@using BlogApp1.Shared
+@inject BlogAiService BlogService
+
+<MudTextField @bind-Value="topic" Label="Topic" />
+<MudTextField @bind-Value="tone" Label="Tone" />
+<MudNumericField @bind-Value="words" Label="Words" />
+
+<MudButton OnClick="Generate">Generate Blog</MudButton>
+
+@if (blog != null)
+{
+    <h3>@topic</h3>
+    <div >@blog.Content</div>
+}
+
+@code {
+    string topic;
+    string tone;
+    int words = 600;
+
+    OllamaBlogResponse blog;
+
+    async Task Generate()
+    {
+        var req = new OllamaBlogRequest
+        {
+            Topic = topic,
+            WordCount = words
+        };
+
+        blog = await BlogService.GenerateBlogAsync(req);
+    }
+}
