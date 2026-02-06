@@ -61,6 +61,10 @@
       "PackagePath": "staticwebassets\\Images\\sample.jpg"
     },
     {
+      "Id": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\wwwroot\\appsettings.json",
+      "PackagePath": "staticwebassets\\appsettings.json"
+    },
+    {
       "Id": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\wwwroot\\blogmain.png",
       "PackagePath": "staticwebassets\\blogmain.png"
     },

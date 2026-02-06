@@ -10,8 +10,8 @@ using BlogApp1.Client.Services;
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
-
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7244/") }); // Replace with your API base URL
+var backend_url = builder.Configuration["Backend:Url"];
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(backend_url) }); // Replace with your API base URL
 
 builder.Services.AddMudServices();
 builder.Services.AddScoped<AuthService>();

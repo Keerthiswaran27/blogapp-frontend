@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "BlogApp1.Client",
   "resources": {
-    "hash": "sha256-nsdILD+6RNrXN5qzS1Wu167Zvm4AyM0MVVv7eqJHscM=",
+    "hash": "sha256-3wAM22Psg9aw/Bylc4PMQLASBJEVNcVEiiLfxWrcXnM=",
     "jsModuleNative": {
       "dotnet.native.8.0.18.n4aozgtlai.js": "sha256-1QpKPnxEuRCElzcp+e3MrovJeAJkuzqKmRQay/6Aa08="
     },
@@ -262,10 +262,10 @@
       "mscorlib.wasm": "sha256-UnQd0YPXNpwbXsKqO8RAqgUVuwZsSpprfAIPpdV/y1Q=",
       "netstandard.wasm": "sha256-/QbD8JDZyYwfyk89W3qJL3HTAINDCVziZIySHIZcDhw=",
       "System.Private.CoreLib.wasm": "sha256-oBqNgH7R24FqGbaL3XnfQDqn3rk28jERFosgAryKT6U=",
-      "BlogApp1.Client.wasm": "sha256-rM5qC+jbBg1palKs07/KhMUlQqbifBzKGlod37aM4dE="
+      "BlogApp1.Client.wasm": "sha256-al2iG3uWmizMbNHvVtvGBCVvbKwsp49zbM0ccepnnQ0="
     },
     "pdb": {
-      "BlogApp1.Client.pdb": "sha256-Rcsh1oFL1BtiiednZg8XzOlKaYg7gNmOwehJFHukBHA="
+      "BlogApp1.Client.pdb": "sha256-jV8rAC0IdIxKlNZRlGPfrivlNi2XiusmYpkTdGVBsHU="
     },
     "libraryInitializers": {
       "_content/TinyMCE.Blazor/TinyMce.Blazor.lib.module.js": "sha256-tqQ9lW0zLap6v2YUXh1bedmuwIbnUqtTPEnfoXbh8zc=",
@@ -280,6 +280,9 @@
   },
   "cacheBootResources": true,
   "debugLevel": -1,
+  "appsettings": [
+    "../appsettings.json"
+  ],
   "globalizationMode": "sharded",
   "extensions": {
     "blazor": {}

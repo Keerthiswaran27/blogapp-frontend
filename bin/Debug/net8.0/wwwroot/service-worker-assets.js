@@ -81,12 +81,16 @@
       "url": "manifest.webmanifest"
     },
     {
-      "hash": "sha256-0sGDFsNODNOUnbACmO4WrOwwgC65WfzcymtckCd0Ryw=",
-      "url": "BlogApp1.Client.styles.css"
+      "hash": "sha256-CpxVtr0RMo5apBvaB+AxVEgu3zqaCMy2YX9AENL2DHk=",
+      "url": "appsettings.json"
     },
     {
       "hash": "sha256-gvHfnndfEu1tRf0rFb5988rWq7ITIotOaE8+AMbKYbc=",
       "url": "_framework\/blazor.webassembly.js"
+    },
+    {
+      "hash": "sha256-0sGDFsNODNOUnbACmO4WrOwwgC65WfzcymtckCd0Ryw=",
+      "url": "BlogApp1.Client.styles.css"
     },
     {
       "hash": "sha256-lBmjuVBnL\/3DlAVqBQHnim+xVlsv+NPFJuQxmXEbFPE=",
@@ -1105,15 +1109,15 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-rM5qC+jbBg1palKs07\/KhMUlQqbifBzKGlod37aM4dE=",
+      "hash": "sha256-1U0NwTPs7Rji95Re75+mhNhjB36mYbIQ\/+rIiOkMCTE=",
       "url": "_framework\/BlogApp1.Client.wasm"
     },
     {
-      "hash": "sha256-Rcsh1oFL1BtiiednZg8XzOlKaYg7gNmOwehJFHukBHA=",
+      "hash": "sha256-FnpUk1AkiY2rbzWs8pRYy3U5Dz5WWYOQDTP9NrgbpXg=",
       "url": "_framework\/BlogApp1.Client.pdb"
     },
     {
-      "hash": "sha256-Om0ilmLr55PNyelJS0KC9JKdyGN35zXM6gF7tvE1wcs=",
+      "hash": "sha256-0JCTkxRJlanVf8nNcTSQ831NEu34QHJEtThSW\/ZrlRk=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -2961,5 +2965,5 @@
       "url": "_content\/AuralizeBlazor\/AuralizeBlazor.tf5u2o3oxg.bundle.scp.css"
     }
   ],
-  "version": "hoAFv7Pd"
+  "version": "kSkJSE+n"
 };

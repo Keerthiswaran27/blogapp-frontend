@@ -9,11 +9,10 @@
 @inject ISnackbar Snackbar
 @inject NavigationManager NavManager
 
-<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-6">
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="allblogs-container">
+    <MudPaper Elevation="8" Class="allblogs-shell">
 
-    <MudCard Elevation="10" Class="rounded-xl">
-
-        <MudTabs Rounded="true" Elevation="0" @bind-ActivePanelIndex="activeIndex">
+        <MudTabs Rounded="true" Elevation="0" @bind-ActivePanelIndex="activeIndex" Class="custom-tabs">
 
             <!-- TAB 1 -->
             <MudTabPanel Text="Prompt">
@@ -47,7 +46,7 @@
                                   Class="mb-4" />
 
                     <MudButton Variant="Variant.Filled"
-                               Color="Color.Primary"
+                               style="background:linear-gradient(135deg,#3d387a,#E9D5FF);color:white;border-radius:16px;"
                                OnClick="Generate"
                                Disabled="loading"
                                FullWidth
@@ -75,23 +74,47 @@
 
                     @if (result == null)
                     {
-                        <MudText Typo="Typo.subtitle1" Color="Color.Secondary">
-                            Generate a blog to see results 👈
-                        </MudText>
+                        <MudContainer Class="pa-6 d-flex flex-column align-center" Style="background-color:transparent" Elevation="0">
+                            <MudText Typo="Typo.h6">Generate a Blog to See the Preview</MudText>
+                            <MudText Typo="Typo.body2" Class="mb-3">Drop a prompt above and let AI do the magic.</MudText>
+                        </MudContainer>
                     }
                     else
                     {
                         <!-- AI IMAGE -->
-                        @if (!string.IsNullOrWhiteSpace(result.ImageUrl))
+                        @* @if (!string.IsNullOrWhiteSpace(result.ImageUrl))
                         {
                             <MudImage Src="@result.ImageUrl"
                                       Alt="@result.Title"
                                       Class="mb-4 rounded-xl"
                                       Width="100" />
-                        }
+                        } *@
 
-                        <MudText Typo="Typo.h4">@result.Title</MudText>
+                        <MudText Typo="Typo.h3"
+                                 Class="mt-3 mb-3"
+                                 Align="Align.Start"
+                                 Style="color:#3d387a; font-family:'Poppins', 'Segoe UI', sans-serif;font-weight:500;">
+                            @result.Title.ToUpper()
+                        </MudText>
 
+                        
+
+                        <MudDivider />
+                       
+                        <!-- CONTENT -->
+                        <MudPaper Class="p-4 mt-3 rounded-xl" Style="padding:15px;background: rgba(193, 188, 214,0.3);" Elevation="1">
+                            @((MarkupString)result.Content)
+                        </MudPaper>
+
+                        <MudPaper Class="p-4 mt-3 rounded-xl" Style="padding:15px;background: rgba(193, 188, 214,0.3);" Elevation="1">
+                            <MudText Typo="Typo.h6" Style="font-weight:600;color:#3d387a; font-family:'Poppins', 'Segoe UI', sans-serif;">Summary</MudText> 
+                            <MudText>@result.Summary</MudText>
+                             
+                        </MudPaper>
+                        <MudPaper Class="p-4 mt-3 rounded-xl" Style="padding:15px;background: rgba(193, 188, 214,0.3);" Elevation="1">
+                           <MudText Typo="Typo.h6" Style="font-weight:600;color:#3d387a; font-family:'Poppins', 'Segoe UI', sans-serif;">Meta Description</MudText> 
+                            <MudText>@result.Meta_Description</MudText>
+                        </MudPaper>
                         <!-- TAGS -->
                         <MudChipSet T="string" Class="my-3">
                             @foreach (var tag in result.Tags)
@@ -102,58 +125,66 @@
                             }
                         </MudChipSet>
 
-                        <MudDivider />
-
-                        <!-- CONTENT -->
-                        <MudPaper Class="p-4 mt-3 rounded-xl" Elevation="1">
-                            @((MarkupString)result.Content)
-                        </MudPaper>
-
                         <!-- ============ IMAGE UPLOAD SECTION ============ -->
                         <MudDivider Class="my-4" />
 
                         <MudText Typo="Typo.h6">Upload Cover Image</MudText>
 
-                        <MudFileUpload T="IReadOnlyList<IBrowserFile>"
-                                       Accept=".png,.jpg,.jpeg"
-                                       MaximumFileCount="1"
-                                       OnFilesChanged="OnInputFileChanged">
+                        <!-- TOGGLE BUTTON -->
+                        <MudButton Variant="Variant.Outlined"
+                                   Color="Color.Primary"
+                                   OnClick="@ToggleUpload"
+                                   StartIcon="@Icons.Material.Filled.Image">
+                            @(isUploadOpen ? "Close Image Upload" : "Open Image Upload")
+                        </MudButton>
 
-                            <ActivatorContent>
-                                <MudPaper Class="pa-6 text-center"
-                                          Outlined="true"
-                                          Style="height:200px;">
-                                    <MudText>
-                                        Drag & drop image<br />
-                                        or click to select
-                                    </MudText>
-                                </MudPaper>
-                            </ActivatorContent>
+                        <!-- COLLAPSE -->
+                        <MudCollapse Expanded="@isUploadOpen">
+                            <MudPaper Class="mt-4 pa-4" Elevation="1">
 
-                        </MudFileUpload>
+                                <MudFileUpload T="IReadOnlyList<IBrowserFile>"
+                                               Accept=".png,.jpg,.jpeg"
+                                               MaximumFileCount="1"
+                                               OnFilesChanged="OnInputFileChanged">
 
-                        @if (file != null)
-                        {
-                            <MudStack Row Spacing="2" Class="mt-3">
-                                <MudButton OnClick="Upload"
-                                           Variant="Variant.Filled"
-                                           Color="Color.Primary">
-                                    Upload
-                                </MudButton>
+                                    <ActivatorContent>
+                                        <MudPaper Class="pa-6 text-center"
+                                                  Outlined="true"
+                                                  Style="height:200px;">
+                                            <MudText>
+                                                Drag & drop image<br />
+                                                or click to select
+                                            </MudText>
+                                        </MudPaper>
+                                    </ActivatorContent>
 
-                                <MudButton OnClick="ClearAsync"
-                                           Variant="Variant.Outlined">
-                                    Clear
-                                </MudButton>
-                            </MudStack>
-                        }
+                                </MudFileUpload>
 
-                        @if (!string.IsNullOrEmpty(UploadedUrl))
-                        {
-                            <MudImage Src="@UploadedUrl"
-                                      Width="200"
-                                      Class="mt-3 rounded-xl" />
-                        }
+                                @if (file != null)
+                                {
+                                    <MudStack Row Spacing="2" Class="mt-3">
+                                        <MudButton OnClick="Upload"
+                                                   Variant="Variant.Filled"
+                                                   Color="Color.Primary">
+                                            Upload
+                                        </MudButton>
+
+                                        <MudButton OnClick="ClearAsync"
+                                                   Variant="Variant.Outlined">
+                                            Clear
+                                        </MudButton>
+                                    </MudStack>
+                                }
+
+                                @if (!string.IsNullOrEmpty(UploadedUrl))
+                                {
+                                    <MudImage Src="@UploadedUrl"
+                                              Width="200"
+                                              Class="mt-3 rounded-xl" />
+                                }
+
+                            </MudPaper>
+                        </MudCollapse>
 
                         <!-- ============ PUBLISH BUTTON ============ -->
                         <MudDivider Class="my-4" />
@@ -161,9 +192,11 @@
                         <MudButton Color="Color.Success"
                                    Variant="Variant.Filled"
                                    FullWidth
+                                   style="background:linear-gradient(135deg,#3d387a,#E9D5FF);color:white;border-radius:16px;"
                                    OnClick="PublishBlogAsync">
-                            🚀 Publish Blog
+                            Publish Blog
                         </MudButton>
+
                     }
 
                 </MudCardContent>
@@ -172,78 +205,130 @@
 
         </MudTabs>
 
-    </MudCard>
+    </MudPaper>
 
 </MudContainer>
 
 @code{
     BlogGenerateRequest request = new();
-BlogGenerateResponse? result;
-bool loading = false;
-int activeIndex = 0;
+    BlogGenerateResponse? result;
+    bool loading = false;
+    int activeIndex = 0;
+    IBrowserFile? file;
+    string? UploadedUrl;
 
-IBrowserFile? file;
-string? UploadedUrl;
+    private bool isUploadOpen = false;
 
-async Task Generate()
-{
-    loading = true;
-    result = await AiService.GenerateBlog(request);
-    activeIndex = 1;
-    loading = false;
-}
-
-// FILE HANDLING
-void OnInputFileChanged(InputFileChangeEventArgs e)
-{
-    file = e.GetMultipleFiles(1).FirstOrDefault();
-}
-
-async Task Upload()
-{
-    if (file is not null)
+    private void ToggleUpload()
     {
-        UploadedUrl =
-            await ImageApiService.UploadImageAsync(file);
+        isUploadOpen = !isUploadOpen;
     }
-}
 
-void ClearAsync()
-{
-    file = null;
-    UploadedUrl = null;
-}
-
-// PUBLISH
-async Task PublishBlogAsync()
-{
-    if (result == null)
-        return;
-
-    var blog = new NewBlogRequest
+    async Task Generate()
     {
-        Title = result.Title,
-        Slug = result.Slug,
-        Content = result.Content,
-        Domain = result.Domain,
-        Summary = result.Summary,
-        MetaDescription = result.Meta_Description,
-        Tags = result.Tags,
-        CoverImageUrl = UploadedUrl
-    };
-
-    try
-    {
-        var created =
-            await BlogService.CreateBlogAsync(blog);
-
-        Snackbar.Add("Blog published successfully!", Severity.Success);
-        NavManager.NavigateTo($"/author/blog/{created.Slug}");
+        loading = true;
+        result = await AiService.GenerateBlog(request);
+        activeIndex = 1;
+        loading = false;
     }
-    catch (Exception ex)
+
+    // FILE HANDLING
+    void OnInputFileChanged(InputFileChangeEventArgs e)
     {
-        Snackbar.Add(ex.Message, Severity.Error);
+        file = e.GetMultipleFiles(1).FirstOrDefault();
     }
-}
+
+    async Task Upload()
+    {
+        if (file is not null)
+        {
+            UploadedUrl =
+                await ImageApiService.UploadImageAsync(file);
+        }
+    }
+
+    void ClearAsync()
+    {
+        file = null;
+        UploadedUrl = null;
+    }
+
+    // PUBLISH
+    async Task PublishBlogAsync()
+    {
+        if (result == null)
+            return;
+
+        if(UploadedUrl == null)
+        {
+            Snackbar.Add("Please upload a cover image before publishing.", Severity.Warning);
+            return;
+        }
+        else
+        {
+            var blog = new NewBlogRequest
+            {
+                Title = result.Title,
+                Slug = result.Slug,
+                Content = result.Content,
+                Domain = result.Domain,
+                Summary = result.Summary,
+                MetaDescription = result.Meta_Description,
+                Tags = result.Tags,
+                CoverImageUrl = UploadedUrl
+            };
+
+            try
+            {
+                var created =
+                    await BlogService.CreateBlogAsync(blog);
+
+                Snackbar.Add("Blog published successfully!", Severity.Success);
+                NavManager.NavigateTo($"/author/blog/{created.Slug}");
+            }
+            catch (Exception ex)
+            {
+                Snackbar.Add(ex.Message, Severity.Error);
+            }
+        }
+    }
 
 }
+<style>
+    .allblogs-container {
+        margin-top: 24px;
+        margin-bottom: 24px;
+        min-height: 90vh;
+        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .allblogs-shell {
+        padding: 24px 28px;
+        border-radius: 24px;
+        /* background: linear-gradient(135deg, #EEF2FF 0%, #E0ECFF 100%); */
+        background: rgba(233, 230, 245,0.4);
+        box-shadow: 0 24px 40px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(148, 163, 184, 0.12);
+    }
+
+    .allblogs-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+
+    .allblogs-title {
+        font-weight: 600;
+        color: #111827;
+    }
+
+    .allblogs-subtitle {
+        color: #6B7280;
+    }
+    .custom-tabs .mud-tabs-tabbar {
+        background:rgba(193, 188, 214,0.3);;
+    }
+    .custom-tabs .mud-tab-slider {
+        background-color: #3f51b5 !important; /* Choose any color you want */
+    }
+</style>

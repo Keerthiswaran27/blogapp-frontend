@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "X5YtahLgw5CrLwAzTBu8S2u7RHTxvVEJwxdsh54aG7g=",
+  "Hash": "AcIqBdCpi1dFmHRrcjVDvw0lN+BJCeu5xl1wAd9mTyw=",
   "Source": "BlogApp1.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -18692,6 +18692,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj\\Debug\\net8.0\\service-worker-assets.js.build"
+    },
+    {
+      "Identity": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\wwwroot\\appsettings.json",
+      "SourceId": "BlogApp1.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "appsettings.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "WasmResource",
+      "AssetTraitValue": "settings",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\appsettings.json"
     },
     {
       "Identity": "C:\\Users\\KEERTHI\\source\\repos\\WiseWork\\MiddleMan\\blogapp-frontend\\BlogApp1.Client\\wwwroot\\blogmain.png",

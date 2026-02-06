@@ -1301,3 +1301,4 @@ C:\Users\KEERTHI\source\repos\WiseWork\MiddleMan\blogapp-frontend\BlogApp1.Clien
 C:\Users\KEERTHI\source\repos\WiseWork\MiddleMan\blogapp-frontend\BlogApp1.Client\obj\Debug\net8.0\refint\BlogApp1.Client.dll
 C:\Users\KEERTHI\source\repos\WiseWork\MiddleMan\blogapp-frontend\BlogApp1.Client\obj\Debug\net8.0\BlogApp1.Client.pdb
 C:\Users\KEERTHI\source\repos\WiseWork\MiddleMan\blogapp-frontend\BlogApp1.Client\obj\Debug\net8.0\ref\BlogApp1.Client.dll
+C:\Users\KEERTHI\source\repos\WiseWork\MiddleMan\blogapp-frontend\BlogApp1.Client\obj\Debug\net8.0\BlogApp1.Client.sourcelink.json
