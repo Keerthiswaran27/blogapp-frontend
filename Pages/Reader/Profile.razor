@@ -32,11 +32,11 @@ else
         </div>
         <MudGrid Spacing="5">
             <!-- Left Column -->
-            <MudItem md="8">
+                <MudItem xs="12" md="8">
                     <MudPaper Class="pa-2 mb-3" Elevation="4" Style="background: rgba(193, 188, 214,0.3);border-radius:16px; display:flex; flex-direction:column; gap:16px;">
-                        <MudGrid Style="height:200px;">
-                            <MudItem md="3">
-                                <MudContainer Style="padding:10px;height:100%;">
+                        <MudGrid>
+                            <MudItem xs="12" sm="4" md="3">
+                                <MudContainer Style="padding:10px;height:100%;display:flex;justify-content:center;align-items:center;">
                                     @if (!string.IsNullOrEmpty(user.AvatarUrl))
                                     {
                                         <MudAvatar Style="height:100%; width:100%; cursor:pointer;">
@@ -51,8 +51,8 @@ else
                                     }
                                 </MudContainer>
                             </MudItem>
-                            <MudItem md="8">
-                                <MudGrid Style="display:flex;justify-content:center;align-items:center;margin-top:8px;">
+                            <MudItem xs="12" sm="8" md="8">
+                                <MudGrid Style="display:flex;justify-content:center;align-items:center;margin-top:5px">
                                     <MudItem md="3">
                                         <MudStack Spacing="0" Justify="Justify.Center" AlignItems="AlignItems.Center">
                                             <MudText Typo="Typo.h6" Align="Align.Center">Followers</MudText>
@@ -97,13 +97,13 @@ else
                         <MudDivider Style="border-color:darkgray" />
                         <MudContainer Style="padding:5px;">
                             <MudGrid Spacing="2">
-                                <MudItem md="4">
+                                <MudItem xs="12" md="4">
                                     <MudTextField @bind-Value="user.FullName" Label="Username" Disabled="true" Variant="Variant.Outlined" />
                                 </MudItem>
-                                <MudItem md="4">
+                                <MudItem xs="12" md="4">
                                     <MudTextField @bind-Value="user.Email" Label="Email" Disabled="true" Variant="Variant.Outlined" />
                                 </MudItem>
-                                <MudItem md="4">
+                                <MudItem xs="12" md="4">
                                     <MudDatePicker Label="Joined On" @bind-Date="user.CreatedAt" Disabled="true" Placeholder="Select Date" Variant="Variant.Outlined" />
                                 </MudItem>
                             </MudGrid>
@@ -142,10 +142,10 @@ else
                 </MudPaper>
 
             </MudItem>
-            <MudItem md="4">
+                <MudItem xs="12" md="4">
                     <MudPaper Class="pa-2 mb-3" Elevation="4" Style="background: rgba(193, 188, 214,0.3);border-radius:16px; display:flex; flex-direction:column; gap:16px;">
                         <MudGrid>
-                            <MudItem md="12">
+                            <MudItem xs="12" md="12">
                                 <MudContainer Style="height:300px;padding:5px;margin:0;border-radius:16px;border:0.5px solid black ">
                                     <MudTabs @bind-ActivePanelIndex="activeIndex" Class="custom-tabs">
                                         <MudTabPanel Class="c1" Text=@("Follwers")></MudTabPanel>
@@ -185,10 +185,10 @@ else
                                     </MudContainer>
                                 </MudContainer>
                             </MudItem>
-                            <MudItem md="12">
-                                <MudContainer Style="height:100px;padding:5px;margin:0;border-radius:16px;border:0.5px solid black ">
+                            <MudItem xs="12" md="12">
+                                <MudContainer Style="height:100px;padding:5px;width:100%;margin:0;border-radius:16px;border:0.5px solid black">
                                     <MudText Typo="Typo.h6" Align="Align.Center" Class="mb-1">ROLES</MudText>
-                                    <MudChipSet T="string" Size="Size.Large" Style="display:flex;justify-content:center">
+                                    <MudChipSet T="string" Size="Size.Large" Style="display:flex;justify-content:center;">
                                         @foreach (var c in user.Roles)
                                         {
                                             <MudChip Variant="Variant.Outlined">@c</MudChip>
@@ -212,8 +212,8 @@ else
                             </div>
                         </div>
                         <MudGrid>
-                            <MudItem xs="9">
-                                    <MudTextField @bind-Value="newsletterEmail"
+                            <MudItem xs="12" sm="9">
+                                <MudTextField @bind-Value="newsletterEmail"
                                                     Label="Enter your email"
                                                     Variant="Variant.Outlined"
                                                     Adornment="Adornment.Start"
@@ -222,9 +222,8 @@ else
                                                     FullWidth="true"
                                                   Class="allblogs-search" />
                             </MudItem>
-                            <MudItem xs="3">
-                                    <MudButton 
-                                                Variant="Variant.Filled"
+                            <MudItem xs="12" sm="3">
+                                <MudButton Variant="Variant.Filled"
                                                 Class="ml-2"
                                                 FullWidth="true"
                                            Style="height:80%;background-color:#3d387a;color:white;font-size:larger"
@@ -454,26 +453,50 @@ else
     }
 }
 <style>
+    /* ========================= */
+    /* 🌈 Global Background */
+    /* ========================= */
+
+    body {
+        background: linear-gradient(to bottom, #ffffff, #ede9ff);
+        margin: 0;
+        padding: 0;
+    }
+
+    /* ========================= */
+    /* 📦 Main Container */
+    /* ========================= */
+
     .allblogs-container {
         margin-top: 24px;
         margin-bottom: 24px;
         min-height: 90vh;
+        padding: 0 16px;
         font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
+
+    /* ========================= */
+    /* 🧊 Shell Card */
+    /* ========================= */
 
     .allblogs-shell {
         padding: 24px 28px;
         border-radius: 24px;
-        /* background: linear-gradient(135deg, #EEF2FF 0%, #E0ECFF 100%); */
-        background: rgba(233, 230, 245,0.4);
+        background: rgba(233, 230, 245, 0.4);
         box-shadow: 0 24px 40px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(148, 163, 184, 0.12);
     }
+
+    /* ========================= */
+    /* 🧾 Header */
+    /* ========================= */
 
     .allblogs-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 16px;
+        flex-wrap: wrap;
+        gap: 12px;
     }
 
     .allblogs-title {
@@ -485,19 +508,91 @@ else
         color: #6B7280;
     }
 
+    /* ========================= */
+    /* 🔎 Newsletter */
+    /* ========================= */
+
     .allblogs-search {
-        flex: 1 1 280px;
+        width: 100%;
     }
+
+    /* ========================= */
+    /* 🧭 Tabs Styling */
+    /* ========================= */
+
     .custom-tabs .mud-tabs-tabbar {
-        background: rgba(233, 230, 245,0.4);
+        background: rgba(233, 230, 245, 0.4);
     }
 
     .custom-tabs .mud-tab-slider {
-        background-color: #3f51b5 !important; /* Choose any color you want */
+        background-color: #3f51b5 !important;
     }
 
-    body {
-        background: linear-gradient(to bottom, #ffffff, #ede9ff);
-        height: 100%;
+    /* ========================= */
+    /* 📱 Tablet Responsive */
+    /* ========================= */
+
+    @@media (max-width: 960px) {
+        .allblogs-shell
+
+    {
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .allblogs-container {
+        padding: 0 12px;
+    }
+
+    /* Make avatar section stack properly */
+    .mud-grid {
+        row-gap: 16px;
+    }
+
+    }
+
+    /* ========================= */
+    /* 📲 Mobile Responsive */
+    /* ========================= */
+
+    @@media (max-width: 600px) {
+        .allblogs-shell
+
+    {
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .allblogs-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Avatar becomes centered */
+    .mud-avatar {
+        width: 120px !important;
+        height: 120px !important;
+        margin: 0 auto;
+    }
+
+    /* Stats cards full width */
+    .mud-paper {
+        width: 100% !important;
+    }
+
+    /* Newsletter stack */
+    .allblogs-search {
+        width: 100%;
+    }
+
+    /* Reduce font slightly */
+    .allblogs-title {
+        font-size: 1.4rem;
+    }
+
+    .allblogs-subtitle {
+        font-size: 0.9rem;
+    }
+
     }
 </style>

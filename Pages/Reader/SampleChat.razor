@@ -1,30 +1,30 @@
 ﻿@page "/reader/chat"
-@layout AuthorLayour 
+@layout AuthorLayour
 @using BlogApp1.Client.Services
 @inject ChatHistoryApiService ChatHistoryApiService
-@inject ChatService ChatApi  
+@inject ChatService ChatApi
 @using MudBlazor
 @using BlogApp1.Shared
-@using System.Text.RegularExpressions 
+@using System.Text.RegularExpressions
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JS
 
 <MudContainer MaxWidth="MaxWidth.Large" Style="height:90vh;" Class="my-8">
-    
-    @if(chatstarted)
+
+    @if (chatstarted)
     {
         <MudContainer Class="chat-container pa-4 mb-6" Style="height: 80vh;">
             <MudContainer Style="overflow-y: auto;height:90%;padding:10px;">
                 @foreach (var msg in messages)
                 {
                     <div class="@(msg.IsUser ? "d-flex justify-end mb-4" : "d-flex justify-start mb-4")">
-                        <MudPaper Class="@(msg.IsUser ? "user-message pa-4" : "bot-message pa-4")" 
-                                    Elevation="2" Width="75%" MaxWidth="800px">
-                    
+                        <MudPaper Class="@(msg.IsUser ? "user-message pa-4" : "bot-message pa-4")"
+                                  Elevation="2" Width="75%" MaxWidth="800px">
+
                             <MudText Typo="Typo.body1" Class="whitespace-pre-wrap">
                                 @((MarkupString)FormatMessage(msg.Content))
                             </MudText>
-                    
+
                             @* @if (!msg.IsUser && msg.Sources?.Any() == true)
                             {
                                 <MudDivider Class="my-3"/>
@@ -44,7 +44,7 @@
                         </MudPaper>
                     </div>
                 }
-                @if(AIChatLoading)
+                @if (AIChatLoading)
                 {
                     <div class="d-flex justify-start mb-4">
                         <MudPaper Class="bot-message pa-4" Elevation="2" Width="75%" MaxWidth="800px">
@@ -55,7 +55,7 @@
                 }
             </MudContainer>
 
-            <MudContainer Class="question-container d-flex gap-3 mt-3">
+            <MudContainer Class="question-container d-flex flex-column flex-md-row gap-3">
                 <MudTextField @bind-Value="question"
                               Placeholder="Next question, answers coming right away...."
                               Variant="Variant.Text"
@@ -72,13 +72,13 @@
     }
     else
     {
-        <MudContainer class="intro-container">
+        <MudContainer Class="intro-container w-100">
             <MudStack Spacing="7">
-                 <MudText Typo="Typo.h3" Align="Align.Start">
-                     Hi @UserName, What would you like to explore today?
-                 </MudText>
-                 
-                <MudContainer Class="question-container d-flex gap-3">
+                <MudText Typo="Typo.h3" Align="Align.Start">
+                    Hi @UserName, What would you like to explore today?
+                </MudText>
+
+                <MudContainer Class="question-container d-flex gap-3" Style="border-radius:16px;">
                     <MudTextField @bind-Value="question"
                                   Placeholder="Ask me about the topic you are interested in...."
                                   Variant="Variant.Text"
@@ -117,10 +117,10 @@
         AIChatLoading = true;
         if (string.IsNullOrWhiteSpace(question)) return;
 
-        messages.Add(new ChatMessage 
-        { 
-            Content = question, 
-            IsUser = true 
+        messages.Add(new ChatMessage
+        {
+            Content = question,
+            IsUser = true
         });
 
         var currentQuestion = question;
@@ -151,9 +151,10 @@
         {
             messages.Add(new ChatMessage
             {
-                Content = $"❌ Error: {ex.Message}",
+                Content = "Something went wrong, Sorry!!!",
                 IsUser = false
             });
+            AIChatLoading = false;
         }
 
         StateHasChanged();
@@ -191,54 +192,157 @@
     }
 }
 <style>
+    /* ========================= */
+    /* 🌈 Global Background */
+    /* ========================= */
+
     body {
+        margin: 0;
+        padding: 0;
         background: linear-gradient(to bottom, #ffffff, #ede9ff);
     }
 
-    .user-message {
-        background: linear-gradient(135deg,#9f9bd1,#E9D5FF) !important;
-        color: black !important;
-        border-radius: 18px !important;
+    /* ========================= */
+    /* 📦 Main Containers */
+    /* ========================= */
+
+    .chat-container {
+        max-width: 850px;
+        margin: 0 auto;
+        padding: 16px;
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
     }
 
     .intro-container {
-        height: 80vh;
-        width: 850px;
+        min-height: 80vh;
+        max-width: 850px;
+        margin: 0 auto;
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 16px;
+        padding: 24px;
     }
 
+    /* ========================= */
+    /* 💬 Messages Area */
+    /* ========================= */
+
+    .messages-scroll {
+        overflow-y: auto;
+        flex-grow: 1;
+        padding: 12px;
+    }
+
+        /* Scrollbar Styling */
+        .messages-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .messages-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .messages-scroll::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 4px;
+        }
+
+    /* ========================= */
+    /* 🗨 Chat Bubbles */
+    /* ========================= */
+
+    .user-message {
+        background: linear-gradient(135deg, #9f9bd1, #E9D5FF) !important;
+        color: black !important;
+        border-radius: 18px !important;
+        max-width: 85%;
+        word-wrap: break-word;
+    }
+
+    .bot-message {
+        background: linear-gradient(180deg, #f3f0ff, #e8e3ff) !important;
+        border-radius: 18px !important;
+        max-width: 85%;
+        word-wrap: break-word;
+    }
+
+    /* ========================= */
+    /* 📝 Input Section */
+    /* ========================= */
+
     .question-container {
-        width: 800px;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
         background-color: white;
         border-radius: 16px;
         padding: 20px;
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
     }
 
-    .chat-container {
-        width: 850px;
-        padding: 10px;
+    /* ========================= */
+    /* 📱 Tablet Responsive */
+    /* ========================= */
+
+    @@media (max-width: 960px) {
+        .chat-container
+
+    {
+        max-width: 100% !important;
+        height: 100vh !important;
+        padding: 12px !important;
     }
 
-        .chat-container::-webkit-scrollbar {
-            width: 8px;
-        }
+    .intro-container {
+        max-width: 100% !important;
+        padding: 16px !important;
+        min-height: 100vh;
+    }
 
-        .chat-container::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
+    .question-container {
+        padding: 14px !important;
+        box-shadow: none !important;
+        border-radius: 16px !important;
+    }
 
-        .chat-container::-webkit-scrollbar-thumb {
-            background: #667eea;
-            border-radius: 4px;
-        }
-
+    .user-message,
     .bot-message {
-        background: linear-gradient(180deg, #f3f0ff, #e8e3ff) !important;
-        border-radius: 18px !important;
+        max-width: 90% !important;
+        padding: 12px !important;
     }
 
+    }
+
+    /* ========================= */
+    /* 📲 Mobile Responsive */
+    /* ========================= */
+
+    @@media (max-width: 600px) {
+        .chat-container
+
+    {
+        padding: 8px !important;
+    }
+
+    .messages-scroll {
+        padding-bottom: 20px !important;
+    }
+
+    .question-container {
+        position: sticky;
+        bottom: 0;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 12px !important;
+    }
+
+    .user-message,
+    .bot-message {
+        max-width: 95% !important;
+    }
+
+    }
 </style>

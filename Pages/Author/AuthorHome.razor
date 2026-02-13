@@ -45,15 +45,15 @@
             </MudItem>
         </MudGrid>
         <MudPaper Elevation="1" Class="pa-4 mt-3" Style="background: rgba(193, 188, 214,0.3);">
-            <MudStack Direction="Row" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Start" Class="mb-2">
+            <MudStack Direction="Row" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Start" Class="mb-2 creation-header">
                 <MudText Typo="Typo.h6" Class="allblogs-title">Your Creations</MudText>
                 <MudText Typo="Typo.subtitle2" class="allblogs-subtitle">
                     
                     A collection of @($"{Blogs?.Count() ?? 0} total") blogs you’ve authored.
                 </MudText>
             </MudStack>
-
-            <MudTable Items="Blogs"
+            <div class="table-wrapper">
+                <MudTable Items="Blogs"
                       Hover="true"
                       Dense="true"
                       Elevation="0"
@@ -95,7 +95,8 @@
                         blogs found for this author.
                     </MudText>
                 </NoRecordsContent>
-            </MudTable>
+                </MudTable>
+            </div>
         </MudPaper>
     </MudPaper>
 </MudContainer>
@@ -129,31 +130,46 @@
     }
 }
 <style>
+    /* ========================= */
+    /* 🌈 Background */
+    /* ========================= */
+
     body {
         background: linear-gradient(to bottom, #ffffff, #ede9ff);
-        height:100vh;
+        margin: 0;
+        padding: 0;
     }
+
+    /* ========================= */
+    /* 📦 Layout */
+    /* ========================= */
 
     .allblogs-container {
         margin-top: 24px;
         margin-bottom: 24px;
         min-height: 90vh;
+        padding: 0 16px;
         font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     .allblogs-shell {
         padding: 24px 28px;
         border-radius: 24px;
-        /* background: linear-gradient(135deg, #EEF2FF 0%, #E0ECFF 100%); */
         background: rgba(233, 230, 245,0.4);
         box-shadow: 0 24px 40px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(148, 163, 184, 0.12);
     }
+
+    /* ========================= */
+    /* 🧾 Header */
+    /* ========================= */
 
     .allblogs-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 16px;
+        flex-wrap: wrap;
+        gap: 12px;
     }
 
     .allblogs-title {
@@ -163,6 +179,15 @@
 
     .allblogs-subtitle {
         color: #6B7280;
+    }
+
+    /* ========================= */
+    /* 📊 Table */
+    /* ========================= */
+
+    .table-wrapper {
+        width: 100%;
+        overflow-x: auto;
     }
 
     .allblogs-table,
@@ -184,7 +209,64 @@
             cursor: pointer;
         }
 
-    .allblogs-title-cell {
-        font-weight: 500;
+        /* Improve action button spacing */
+        .allblogs-table .mud-button {
+            min-width: 70px;
+        }
+
+    /* ========================= */
+    /* 📱 Tablet */
+    /* ========================= */
+
+    @@media (max-width: 960px) {
+        .allblogs-shell
+
+    {
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .creation-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    }
+
+    /* ========================= */
+    /* 📲 Mobile */
+    /* ========================= */
+
+    @@media (max-width: 600px) {
+        .allblogs-shell
+
+    {
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .allblogs-title {
+        font-size: 1.4rem;
+    }
+
+    .allblogs-subtitle {
+        font-size: 0.9rem;
+    }
+
+    /* Make table stacked cards cleaner */
+    .mud-table {
+        font-size: 0.85rem;
+    }
+
+    .mud-chip {
+        font-size: 0.7rem !important;
+    }
+
+    .mud-button {
+        font-size: 0.7rem !important;
+        padding: 4px 8px !important;
+    }
+
     }
 </style>

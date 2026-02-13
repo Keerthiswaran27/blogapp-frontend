@@ -1,46 +1,62 @@
 ﻿@page "/author/chat"
 @layout ReaderLayout
-@inject RAGHttpService RAGService
+@using BlogApp1.Client.Services
+@inject ChatHistoryApiService ChatHistoryApiService
+@inject ChatService ChatApi
 @using MudBlazor
 @using BlogApp1.Shared
-@using System.Text.RegularExpressions 
+@using System.Text.RegularExpressions
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JS
 
 
-<MudContainer MaxWidth="MaxWidth.Large" Style="height:100vh;" Class="my-8">
-    
-    @if(chatstarted)
+<MudContainer MaxWidth="MaxWidth.Large" Style="height:90vh;" Class="my-8">
+
+    @if (chatstarted)
     {
         <MudContainer Class="chat-container pa-4 mb-6" Style="height: 80vh;">
             <MudContainer Style="overflow-y: auto;height:90%;padding:10px;">
                 @foreach (var msg in messages)
                 {
                     <div class="@(msg.IsUser ? "d-flex justify-end mb-4" : "d-flex justify-start mb-4")">
-                        <MudPaper Class="@(msg.IsUser ? "user-message pa-4" : "bot-message pa-4")" 
-                                    Elevation="2" Width="75%" MaxWidth="800px">
-                    
-                            <!-- ✅ FIXED: MudText instead of MudMarkdown -->
-                            <MudText Typo="Typo.body1" Class="whitespace-pre-wrap">@((MarkupString)FormatMessage(msg.Content))</MudText>
-                    
-                            @if (!msg.IsUser && msg.Sources?.Any() == true)
+                        <MudPaper Class="@(msg.IsUser ? "user-message pa-4" : "bot-message pa-4")"
+                                  Elevation="2" Width="75%" MaxWidth="800px">
+
+                            <MudText Typo="Typo.body1" Class="whitespace-pre-wrap">
+                                @((MarkupString)FormatMessage(msg.Content))
+                            </MudText>
+
+                            @* @if (!msg.IsUser && msg.Sources?.Any() == true)
                             {
                                 <MudDivider Class="my-3"/>
                                 <MudChipSet T="string" Row="true">
                                     @foreach (var source in msg.Sources.Take(3))
                                     {
-                                        <MudChip Variant="Variant.Outlined" Style="@($"color:{Colors.Indigo.Darken1};")" Size="Size.Small" OnClick="()=>GoToBlog(source.Url)">
-                                            <strong>[@source.SourceNumber]</strong>@(" "+@source.Title)
-                                            @* <small>(Score: @source.Score.ToString("F3"))</small> *@
+                                        <MudChip Variant="Variant.Outlined"
+                                                 Style="@($"color:{Colors.Indigo.Darken1};")"
+                                                 Size="Size.Small"
+                                                 @onclick="()=>GoToBlog(source.Url)">
+                                            <strong>[@source.SourceNumber]</strong>
+                                            @(" "+@source.Title)
                                         </MudChip>
                                     }
                                 </MudChipSet>
-                            }
+                            } *@
+                        </MudPaper>
+                    </div>
+                }
+                @if (AIChatLoading)
+                {
+                    <div class="d-flex justify-start mb-4">
+                        <MudPaper Class="bot-message pa-4" Elevation="2" Width="75%" MaxWidth="800px">
+                            <MudSkeleton />
+                            <MudSkeleton />
                         </MudPaper>
                     </div>
                 }
             </MudContainer>
-            <MudContainer Class="question-container d-flex gap-3 mt-3">
+
+            <MudContainer Class="question-container d-flex flex-column flex-md-row gap-3">
                 <MudTextField @bind-Value="question"
                               Placeholder="Next question, answers coming right away...."
                               Variant="Variant.Text"
@@ -49,19 +65,21 @@
                 <MudButton Variant="Variant.Filled"
                            style="background-color:black; color:white;border-radius:16px;"
                            OnClick="SendQuestion"
-                           Size="Size.Large">send
+                           Size="Size.Large">
+                    send
                 </MudButton>
             </MudContainer>
         </MudContainer>
-
     }
     else
     {
-        <MudContainer class="intro-container">
+        <MudContainer Class="intro-container w-100">
             <MudStack Spacing="7">
-                 <MudText Typo="Typo.h3" Align="Align.Start">Hi @UserName, What would you like to explore today?</MudText>
-                 
-                <MudContainer Class="question-container d-flex gap-3">
+                <MudText Typo="Typo.h3" Align="Align.Start">
+                    Hi @UserName, What would you like to explore today?
+                </MudText>
+
+                <MudContainer Class="question-container d-flex gap-3" Style="border-radius:16px;">
                     <MudTextField @bind-Value="question"
                                   Placeholder="Ask me about the topic you are interested in...."
                                   Variant="Variant.Text"
@@ -74,28 +92,38 @@
                     </MudButton>
                 </MudContainer>
             </MudStack>
-                
         </MudContainer>
     }
-
-
 </MudContainer>
 
 @code {
+
     private string question = "";
     private List<ChatMessage> messages = new();
     private bool chatstarted = false;
     private string UserName = "";
+    private Guid UserUuid;
+    private bool AIChatLoading = false;
+
     protected override async Task OnInitializedAsync()
     {
-        UserName = await JS.InvokeAsync<string>("sessionStorage.getItem", "name");
+        UserName = await JS.InvokeAsync<string>(
+            "sessionStorage.getItem", "name");
+        UserUuid = await JS.InvokeAsync<Guid>(
+            "sessionStorage.getItem", "uid");
     }
+
     private async Task SendQuestion()
     {
+        AIChatLoading = true;
         if (string.IsNullOrWhiteSpace(question)) return;
 
-        var userMsg = new ChatMessage { Content = question, IsUser = true };
-        messages.Add(userMsg);
+        messages.Add(new ChatMessage
+        {
+            Content = question,
+            IsUser = true
+        });
+
         var currentQuestion = question;
         chatstarted = true;
         question = "";
@@ -103,99 +131,213 @@
 
         try
         {
-            var response = await RAGService.ChatAsync(currentQuestion);
-            var botMsg = new ChatMessage 
-            { 
-                Content = response.Answer, 
-                IsUser = false, 
-                Sources = response.Sources 
-            };
-            messages.Add(botMsg);
+            // 🔥 NEW SERVICE CALL
+            var response =
+                await ChatApi.AskBot(currentQuestion);
+            AIChatLoading = false;
+            messages.Add(new ChatMessage
+            {
+                Content = response.Answer,
+                IsUser = false,
+                Sources = response.Sources
+            });
+            ChatInsertDto input = new();
+
+            input.UserMessage = currentQuestion;
+            input.AiMessage = response.Answer;
+            input.AuthorUuid = UserUuid;
+            await ChatHistoryApiService.SaveChatAsync(input);
         }
         catch (Exception ex)
         {
-            messages.Add(new ChatMessage 
-            { 
-                Content = $"❌ Error: {ex.Message}", 
-                IsUser = false 
+            messages.Add(new ChatMessage
+            {
+                Content = "Something went wrong, Sorry!!!",
+                IsUser = false
             });
+            AIChatLoading = false;
         }
-        
+
         StateHasChanged();
     }
+
     private void GoToBlog(string url)
     {
         NavigationManager.NavigateTo(url, true);
     }
-    // ✅ Basic markdown formatting (bold, code blocks)
+
+    // formatting stays same
     private string FormatMessage(string content)
     {
-        // Bold: **text** → <strong>text</strong>
-        content = Regex.Replace(content, @"\*\*(.*?)\*\*", "<strong>$1</strong>");
-        
-        // Code: `code` → <code>code</code>
-        content = Regex.Replace(content, @"`(.*?)`", "<code>$1</code>");
-        
-        // Code blocks: `````` → <pre><code>code</code></pre>
-        content = Regex.Replace(content, @"``````", "<pre><code>$1</code></pre>", RegexOptions.Singleline);
-        
-        // Line breaks
+        content = Regex.Replace(content,
+            @"\*\*(.*?)\*\*", "<strong>$1</strong>");
+
+        content = Regex.Replace(content,
+            @"`(.*?)`", "<code>$1</code>");
+
+        content = Regex.Replace(content,
+            @"``````", "<pre><code>$1</code></pre>",
+            RegexOptions.Singleline);
+
         content = content.Replace("\n", "<br/>");
-        
+
         return content;
     }
 
+    // 🔥 UPDATED MODEL
     public class ChatMessage
     {
         public string Content { get; set; } = "";
         public bool IsUser { get; set; }
-        public List<Source> Sources { get; set; } = new();
+        public List<SourceSnippet> Sources { get; set; } = new();
     }
 }
 <style>
+    /* ========================= */
+    /* 🌈 Global Background */
+    /* ========================= */
+
     body {
+        margin: 0;
+        padding: 0;
         background: linear-gradient(to bottom, #ffffff, #ede9ff);
-       
     }
+
+    /* ========================= */
+    /* 📦 Main Containers */
+    /* ========================= */
+
+    .chat-container {
+        max-width: 850px;
+        margin: 0 auto;
+        padding: 16px;
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .intro-container {
+        min-height: 80vh;
+        max-width: 850px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 24px;
+    }
+
+    /* ========================= */
+    /* 💬 Messages Area */
+    /* ========================= */
+
+    .messages-scroll {
+        overflow-y: auto;
+        flex-grow: 1;
+        padding: 12px;
+    }
+
+        /* Scrollbar Styling */
+        .messages-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .messages-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .messages-scroll::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 4px;
+        }
+
+    /* ========================= */
+    /* 🗨 Chat Bubbles */
+    /* ========================= */
+
     .user-message {
-        background: linear-gradient(135deg,#9f9bd1,#E9D5FF) !important;
+        background: linear-gradient(135deg, #9f9bd1, #E9D5FF) !important;
         color: black !important;
         border-radius: 18px !important;
-    }   
-    .intro-container{
-        height:80vh;
-        width:850px;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        border-radius:16px;
-    }
-    .question-container{
-        width:800px;background-color:white;border-radius:16px;padding:20px;box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-        
-    }
-    .chat-container {
-    width:850px;
-    padding:10px;
-}
-
-    .chat-container::-webkit-scrollbar {
-        width: 8px;
+        max-width: 85%;
+        word-wrap: break-word;
     }
 
-    .chat-container::-webkit-scrollbar-track {
-        background: #f1f1f1;
+    .bot-message {
+        background: linear-gradient(180deg, #f3f0ff, #e8e3ff) !important;
+        border-radius: 18px !important;
+        max-width: 85%;
+        word-wrap: break-word;
     }
 
-    .chat-container::-webkit-scrollbar-thumb {
-        background: #667eea;
-        border-radius: 4px;
+    /* ========================= */
+    /* 📝 Input Section */
+    /* ========================= */
+
+    .question-container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
     }
 
+    /* ========================= */
+    /* 📱 Tablet Responsive */
+    /* ========================= */
 
-.bot-message {
-   background: linear-gradient(180deg, #f3f0ff, #e8e3ff) !important;
-    border-radius: 18px !important;
-}
+    @@media (max-width: 960px) {
+        .chat-container {
+            max-width: 100% !important;
+            height: 100vh !important;
+            padding: 12px !important;
+        }
 
+        .intro-container {
+            max-width: 100% !important;
+            padding: 16px !important;
+            min-height: 100vh;
+        }
+
+        .question-container {
+            padding: 14px !important;
+            box-shadow: none !important;
+            border-radius: 16px !important;
+        }
+
+        .user-message,
+        .bot-message {
+            max-width: 90% !important;
+            padding: 12px !important;
+        }
+    }
+
+    /* ========================= */
+    /* 📲 Mobile Responsive */
+    /* ========================= */
+
+    @@media (max-width: 600px) {
+        .chat-container {
+            padding: 8px !important;
+        }
+
+        .messages-scroll {
+            padding-bottom: 20px !important;
+        }
+
+        .question-container {
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px !important;
+        }
+
+        .user-message,
+        .bot-message {
+            max-width: 95% !important;
+        }
+    }
 </style>

@@ -81,7 +81,7 @@
       "url": "manifest.webmanifest"
     },
     {
-      "hash": "sha256-CpxVtr0RMo5apBvaB+AxVEgu3zqaCMy2YX9AENL2DHk=",
+      "hash": "sha256-RyUD374YNm1ArXsTmD6wgNpCaEeX7W9Ns0ydbIjh5mI=",
       "url": "appsettings.json"
     },
     {
@@ -1109,15 +1109,15 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-1U0NwTPs7Rji95Re75+mhNhjB36mYbIQ\/+rIiOkMCTE=",
+      "hash": "sha256-3GpI2+CS4NfT9UrwVuoK8AaTxVx1dlZcVWVZhGa8LhI=",
       "url": "_framework\/BlogApp1.Client.wasm"
     },
     {
-      "hash": "sha256-FnpUk1AkiY2rbzWs8pRYy3U5Dz5WWYOQDTP9NrgbpXg=",
+      "hash": "sha256-VNOOODksb1CfsmpqEZBV9YapbPxhmPLl34L0AhV5Azk=",
       "url": "_framework\/BlogApp1.Client.pdb"
     },
     {
-      "hash": "sha256-0JCTkxRJlanVf8nNcTSQ831NEu34QHJEtThSW\/ZrlRk=",
+      "hash": "sha256-LRwFktJp5zKHg2Q67OBbtztjjycRgrPVa+uTZMq6lYY=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -2965,5 +2965,5 @@
       "url": "_content\/AuralizeBlazor\/AuralizeBlazor.tf5u2o3oxg.bundle.scp.css"
     }
   ],
-  "version": "kSkJSE+n"
+  "version": "RVdFWoO1"
 };
